@@ -6,8 +6,11 @@ import SignupPage from '@/router/SignupPage'
 import OrganisationPage from '@/router/OrganisationPage'
 import { checkUser } from '@/api/auth';
 import Buefy from 'buefy';
+import Vuetify from 'vuetify'
 import 'buefy/lib/buefy.css';
+
 Vue.use(Buefy);
+Vue.use(Vuetify);
 
 
 Vue.use(Router)

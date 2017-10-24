@@ -12,7 +12,7 @@
             </b-input>
         </b-field>
 
-      <button class="button is-primary">Login</button>
+      <div><v-btn flat color="primary">Login</v-btn></div>
 
 
 </form>
