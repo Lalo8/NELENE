@@ -8,6 +8,7 @@
   </b-field>
         <b-field label="Password">
             <b-input type="password"
+            v-model="password"
                 password-reveal>
             </b-input>
         </b-field>

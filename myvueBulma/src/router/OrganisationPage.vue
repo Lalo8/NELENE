@@ -23,7 +23,7 @@
     <div class="content">
       <p>{{organisation.description}}</p>
       <br>
-    <p>{{organisation.category}}</p>
+    <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
     </div>
   </div>
 </div>
