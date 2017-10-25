@@ -1,8 +1,8 @@
 <template>
 <div>
 <form @submit.prevent="login">
-<b-field label="Username">
-            <b-input v-model="username" maxlength="30" icon="user" >
+<b-field label="Email">
+            <b-input v-model="email" maxlength="30" icon="user" >
             </b-input>
           
   </b-field>
@@ -26,13 +26,13 @@ import { login } from '@/api/auth'
 export default {
   data () {
     return {
-      username:'',
+      email:'',
       password:'',
     }
   },
  methods: {
     login () {
-      login(this.username, this.password, this.$root).then(data => {
+      login(this.email, this.password, this.$root).then(data => {
         this.$router.push('/')
       })
     },

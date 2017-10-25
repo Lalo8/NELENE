@@ -27,10 +27,10 @@ export function checkUser(vm) {
   }
 }
 
-export function login(username, password, vm) {
+export function login(email, password, vm) {
   return auth
     .post('/login', {
-      username,
+      email,
       password,
     })
     .then(response => {

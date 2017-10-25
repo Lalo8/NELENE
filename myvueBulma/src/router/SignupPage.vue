@@ -4,8 +4,8 @@
       {{ error.message }}
     </b-notification>
     <form @submit.prevent="signup">
-      <b-field label="Username">
-        <b-input v-model="username" required maxlength="30"></b-input>
+      <b-field label="Email">
+        <b-input v-model="email" required maxlength="30"></b-input>
       </b-field>
 
        <b-field label="Name">
@@ -33,7 +33,7 @@ import { signup } from '@/api/auth'
 export default {
   data () {
     return {
-      username: '',
+      email: '',
       password: '',
       name: '',
       error: null
@@ -43,7 +43,7 @@ export default {
     signup () {
       this.error = null
       signup({
-        username: this.username,
+        email: this.email,
         name: this.name,
         password: this.password
       }).then(() => {
