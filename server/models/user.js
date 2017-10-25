@@ -5,15 +5,8 @@ const { Schema } = mongoose;
 const STATUSES = [ 'entrepreneur', 'incubatorMember','investor'];
 
 const userSchema = new Schema({
-	username: String,
-	password: {
-		type: String,
-		required: true,
-	},
 	email: {
 		type: String,
-		required: true,
-		unique: true,
 	},
 	status: {
 		type: String,
@@ -28,6 +21,8 @@ const userSchema = new Schema({
 
 
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose, {
+	usernameField: "email"
+});
 
 module.exports = mongoose.model('User', userSchema);

@@ -84,6 +84,7 @@ app.use((req, res, next) => {
 // error handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
+  console.log(err)
   // return the error message only in development mode
   res.json({
     error: req.app.get('env') === 'development' ? err : {},

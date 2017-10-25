@@ -7,14 +7,14 @@ const config = require('../config');
 router.post('/signup', (req, res, next) => {
   // extract the info we need from the body
   // of the request
-  const { username, name, password } = req.body;
+  const { email, name, password } = req.body;
 
   // create the new user
   // notice how we don't pass the password because
   // we're letting User.register add the hashed version
   // for us
   const user = new User({
-    username,
+    email,
     name,
   });
 
@@ -29,11 +29,11 @@ router.post('/signup', (req, res, next) => {
 // User.authenticate() returns a function
 const authenticate = User.authenticate();
 router.post('/login', (req, res, next) => {
-  const { username, password } = req.body;
-  // check if we have a username and password
-  if (username && password) {
+  const { email, password } = req.body;
+  // check if we have a email and password
+  if (email && password) {
     // test if the credentials are valid
-    authenticate(username, password, (err, user, failed) => {
+    authenticate(email, password, (err, user, failed) => {
       if (err) {
         // an unexpected error from the database
         return next(err);
@@ -61,7 +61,7 @@ router.post('/login', (req, res, next) => {
         res.json({
           user: {
             name: user.name,
-            username: user.username,
+            email: user.email,
             _id: user._id,
           },
           token,
