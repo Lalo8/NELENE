@@ -2,17 +2,17 @@
 <div>
 <form @submit.prevent="login">
 <b-field label="Username">
-            <b-input v-model="username" maxlength="30"></b-input>
-        </b-field>
-
+            <b-input v-model="username" maxlength="30" icon="user" >
+            </b-input>
+          
+  </b-field>
         <b-field label="Password">
             <b-input type="password"
-                v-model="password"
                 password-reveal>
             </b-input>
         </b-field>
 
-      <div><v-btn flat color="primary">Login</v-btn></div>
+      <button class="button is-primary">Login</button>
 
 
 </form>
@@ -44,5 +44,10 @@ export default {
   form {
     max-width: 400px;
     margin: auto;
+  }
+  b-input icon {
+  
+    height: 1.60em;
+    margin-right:3px;
   }
 </style>

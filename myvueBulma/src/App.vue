@@ -7,16 +7,16 @@
       <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
     </a>
 
-    <div class="navbar-burger burger" data-target="navMenuTransparentExample">
+    <div class="navbar-burger burger" data-target="navDropping">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
 
-  <div id="navMenuTransparentExample" class="navbar-menu">
-    <div class="navbar-start">
-      <div class="navbar-item has-dropdown is-hoverable">
+  <div id="navDropping" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item is-hoverable">
         <router-link v-if="!$root.user" to="login" class="navbar-link ">
           Login
         </router-link>   

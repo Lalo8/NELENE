@@ -9,7 +9,9 @@ import Buefy from 'buefy';
 import Vuetify from 'vuetify'
 import 'buefy/lib/buefy.css';
 
-Vue.use(Buefy);
+Vue.use(Buefy,{
+  defaultIconPack:'fa'
+});
 Vue.use(Vuetify);
 
 
