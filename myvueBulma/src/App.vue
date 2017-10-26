@@ -13,7 +13,6 @@
       <span></span>
     </div>
   </div>
-
   <div id="navDropping" class="navbar-menu">
     <div class="navbar-end">
       <div class="navbar-item is-hoverable">

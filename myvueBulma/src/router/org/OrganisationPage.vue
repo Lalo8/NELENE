@@ -24,6 +24,8 @@
       <p>{{organisation.description}}</p>
       <br>
     <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
+    <b-tag rounded type="is-warning is-medium">{{organisation.needs}}</b-tag>
+    <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
     </div>
   </div>
 </div>
