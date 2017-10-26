@@ -43,6 +43,7 @@ const strategy = new Strategy(
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   },
   (payload, done) => {
+    console.log("DEBUG Strategy");
     // payload is the object we encrypted at the route /api/token
     // We get the user id, make sure the user exist by looking it up
     User.findById(payload.id).then(user => {

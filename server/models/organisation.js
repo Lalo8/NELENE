@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const CATEGORIES = [ 'startup', 'incubator', 'investmentfund' ];
 const STATUSES_ORG = [ 'pending', 'accepted', 'rejected'];
-const NEEDS = ['recruitment needs', 'location needs', 'seed funding']
+const NEEDS = ['recruitment', 'location', 'seed funding']
 
 const organizationSchema = new Schema({
 	name: {
@@ -14,26 +14,35 @@ const organizationSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	contacts: {
-		email: { type: String, required: true, },
-		phone: { type: String, required: true, },
+	contact: {
+		type: String, 
+		required: true, 
 	},
 	address: {
-		zip: { type: String, required: true, },
-		country: { type: String, required: true, },
-		city: { type: String, required: true, },
-		street: { type: String, required: true, },
+		type: String, 
+		required: true, 
+		
+	},
+	country: {
+		type: String, 
+		required: true, 
+		
+	},
+	city: {
+		type: String, 
+		required: true, 
+		
 	},
 	category: {
 		type: String,
 		enum: CATEGORIES,
 		default: 'startup',
     },
-    needs: {
+    needs: [{
 		type: String,
 		enum: NEEDS,
-		default: 'recruitment needs',
-	},
+		default: 'recruitment',
+	}],
 	status: {
 		type: String,
 		enum: STATUSES_ORG,
@@ -44,9 +53,6 @@ const organizationSchema = new Schema({
 			required: true,
 			ref: 'User',
 		},
-	location: { type: { type: String }, coordinates: [Number] }
 });
-
-organizationSchema.index({ location: '2dsphere' });
 
 module.exports = mongoose.model('Organisation', organizationSchema);
