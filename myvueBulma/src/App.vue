@@ -19,10 +19,35 @@
         </router-link>   
         <router-link v-if="!$root.user" to="signup" class="navbar-link">
           Signup
-        </router-link>   
-        <a class="navbar-item" @click.prevent="logout" v-if="$root.user" href="#">
-            Logout
-          </a> 
+        </router-link> 
+         <b-dropdown v-model="navigation" v-if="$root.user"position="is-bottom-left">
+                    <a class="navbar-item" slot="trigger">
+                       <b-icon icon="home"></b-icon> <span>My profile</span>
+                         
+                        <b-icon icon="arrow_drop_down"></b-icon>
+                    </a>
+
+                    <b-dropdown-item custom>
+                        Logged as <b></b>
+                    </b-dropdown-item>
+                    <hr class="dropdown-divider">
+                    <b-dropdown-item has-link>
+                            <b-icon icon="link"></b-icon>
+                            My Profile
+                    </b-dropdown-item>
+                    <b-dropdown-item value="home">
+                        <b-icon icon="home"></b-icon>
+                       My organisations
+                    </b-dropdown-item>
+                    <b-dropdown-item value="logout">
+                    <a class="navbar-item" @click.prevent="logout"href="#">
+                         Logout
+                        <b-icon icon="exit_to_app"></b-icon> 
+                    </a> 
+                    </b-dropdown-item>
+                </b-dropdown>  
+                
+       
       </div>
     </div>
   </div>
@@ -48,6 +73,8 @@ export default {
     return {
       email:'',
       password:'',
+      name:'',
+      active:'',
     }
   },
   methods: {
