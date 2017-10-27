@@ -1,5 +1,40 @@
 <template>
-  <div>
+<form @submit.prevent="login">
+        <div class="modal-card" style="width:500px">
+                <section class="modal-card-body">
+                    <b-field label="Email">
+                        <b-input v-model="email" 
+                            type="email"
+                            placeholder="Your email"
+                            required>
+                        </b-input>
+                    </b-field> 
+                    <b-field label="Name">
+                        <b-input v-model="name" 
+                            type="name"
+                            placeholder="Your name"
+                            required>
+                        </b-input>
+                    </b-field>
+
+                    <b-field label="Password">
+                        <b-input
+                        v-model="password"
+                            type="password"
+                            password-reveal
+                            placeholder="Your password"
+                            required>
+                        </b-input>
+                    </b-field>
+
+                    <b-checkbox>Remember me</b-checkbox>
+                </section>
+              <footer class="modal-card-foot">
+                  <button class="button is-primary">Sign up</button>
+              </footer>
+          </div>
+</form>
+  <!-- <div>
     <b-notification v-if="error" type="is-danger" has-icon>
       {{ error.message }}
     </b-notification>
@@ -17,14 +52,13 @@
               type="password"
               required
               v-model="password"
-              password-reveal
-            >
+              password-reveal>
             </b-input>
         </b-field>
 
         <button class="button is-primary">Signup</button>
       </form>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -47,7 +81,7 @@ export default {
         name: this.name,
         password: this.password
       }).then(() => {
-        this.$router.push('/login')
+        this.$router.push('/organisations')
       }).catch(err => {
         this.error = err.response.data.error
         console.error('Signup err', err)
@@ -62,4 +96,24 @@ export default {
     max-width: 400px;
     margin: auto;
   }
+.modal-card{
+  margin-top: 5rem;
+  padding: 3em;
+  max-width: 30rem;
+   background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  &:hover {
+    .card__image {
+      filter: contrast(100%);
+    }
+  }
+}
+
+button{
+    margin: auto;
+}
 </style>

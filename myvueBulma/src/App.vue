@@ -3,34 +3,33 @@
 
 <nav class="navbar is-primary">
   <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-    </a>
 
-    <div class="navbar-burger burger" data-target="navDropping">
+    <div class="navbar-burger burger" data-target="navDropping" :class="{'is-active': active }">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
-  <div id="navDropping" class="navbar-menu">
+  <div id="navDropping" class="navbar-menu" :class="{'is-active': active }">
+    
     <div class="navbar-end">
-      <div class="navbar-item is-hoverable">
-        <router-link v-if="!$root.user" to="login" class="navbar-link ">
-          Login
+      <div class="navbar-item">
+        <router-link v-if="!$root.user" to="login" class="navbar-link">
+          <span>Login</span>
         </router-link>   
-        <router-link v-if="!$root.user" to="signup" class="navbar-link ">
+        <router-link v-if="!$root.user" to="signup" class="navbar-link">
           Signup
         </router-link>   
-        <a  @click.prevent="logout" v-if="$root.user" class="navbar-link " >
+        <router-link  @click.prevent="logout" v-if="$root.user" class="navbar-link" >
           Logout
-        </a>   
+        </router-link>
+           
       </div>
     </div>
   </div>
 </nav>
 <div class="subnavbar is-primary">
-<h1>NEL℈NE</h1>
+<a href="/"><h1>NEL℈NE</h1></a>
 </div>
 
 <section>
@@ -43,15 +42,72 @@
 
 <script>
 import { logout } from '@/api/auth'
+import { login } from '@/api/auth'
+import { signup } from '@/api/auth'
 export default {
+
   name: 'app',
+  data () {
+    return {
+      email:'',
+      password:'',
+    }
+  },
   methods: {
     logout () {
       logout(this.$root)
-      this.$router.push('/')
-    }
-  }
+      this.$router.push('/organisations')
+    },
+    login () {
+      login(this.email, this.password, this.$root).then(data => {
+        this.$router.push('/organisations')
+      })
+    },
+    signup () {
+      this.error = null
+      signup({
+        email: this.email,
+        name: this.name,
+        password: this.password
+      }).then(() => {
+        this.$router.push('/organisations')
+      }).catch(err => {
+        this.error = err.response.data.error
+        console.error('Signup err', err)
+      })
+    },
+
+    // toggled() {
+    //   this.active =!this.active;
+    // }
+  },
+  
 }
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Get all "navbar-burger" elements
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach(function ($el) {
+      $el.addEventListener('click', function () {
+
+        // Get the target from the "data-target" attribute
+        var target = $el.dataset.target;
+        var $target = document.getElementById(target);
+
+        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+        $el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
 </script>
 
 <style>
@@ -79,5 +135,23 @@ export default {
   padding-top : 30px;
   font-size:80px;
   color: white;
+}
+
+
+.navbar-link::after {
+    border:0;
+    border-right: 0;
+    border-top: 0;
+    content: " ";
+    display: block;
+    height: 0.5em;
+    pointer-events: none;
+    position: absolute;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: 0.5em;
+    margin-top: -0.375em;
+    right: 1.125em;
+    top: 50%;
 }
 </style>

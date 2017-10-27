@@ -1,23 +1,34 @@
 <template>
 <div>
 <form @submit.prevent="login">
-<b-field label="Email">
-            <b-input v-model="email" maxlength="30" icon="user" >
-            </b-input>
-          
-  </b-field>
-        <b-field label="Password">
-            <b-input type="password"
-            v-model="password"
-                password-reveal>
-            </b-input>
-        </b-field>
+        <div class="modal-card" style="width:500px">
+                <section class="modal-card-body">
+                    <b-field label="Email">
+                        <b-input v-model="email" 
+                            type="email"
+                            placeholder="Your email"
+                            required>
+                        </b-input>
+                    </b-field>
 
-      <button class="button is-primary">Login</button>
+                    <b-field label="Password">
+                        <b-input
+                        v-model="password"
+                            type="password"
+                            password-reveal
+                            placeholder="Your password"
+                            required>
+                        </b-input>
+                    </b-field>
 
-
+                    <b-checkbox>Remember me</b-checkbox>
+                </section>
+              <footer class="modal-card-foot is-centered">
+                  <button class="button is-primary">Login</button>
+              </footer>
+          </div>
 </form>
- </div>
+</div>
 </template>
 
 <script>
@@ -28,6 +39,8 @@ export default {
     return {
       email:'',
       password:'',
+      name: '',
+      error: null
     }
   },
  methods: {
@@ -42,13 +55,25 @@ export default {
 </script>
 
 <style scoped>
-  form {
-    max-width: 400px;
+
+.modal-card{
+  margin-top: 5rem;
+  padding: 3em;
+  max-width: 30rem;
+   background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  &:hover {
+    .card__image {
+      filter: contrast(100%);
+    }
+  }
+}
+
+button{
     margin: auto;
-  }
-  b-input icon {
-  
-    height: 1.60em;
-    margin-right:3px;
-  }
+}
 </style>
