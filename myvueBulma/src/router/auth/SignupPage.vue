@@ -81,7 +81,7 @@ export default {
         name: this.name,
         password: this.password
       }).then(() => {
-        this.$router.push('/organisations')
+        this.$router.push('/')
       }).catch(err => {
         this.error = err.response.data.error
         console.error('Signup err', err)

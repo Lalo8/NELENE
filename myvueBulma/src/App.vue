@@ -15,15 +15,14 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <router-link v-if="!$root.user" to="login" class="navbar-link">
-          <span>Login</span>
+          Login
         </router-link>   
         <router-link v-if="!$root.user" to="signup" class="navbar-link">
           Signup
         </router-link>   
-        <router-link  @click.prevent="logout" v-if="$root.user" class="navbar-link" >
-          Logout
-        </router-link>
-           
+        <a class="navbar-item" @click.prevent="logout" v-if="$root.user" href="#">
+            Logout
+          </a> 
       </div>
     </div>
   </div>
@@ -42,8 +41,6 @@
 
 <script>
 import { logout } from '@/api/auth'
-import { login } from '@/api/auth'
-import { signup } from '@/api/auth'
 export default {
 
   name: 'app',
@@ -56,25 +53,7 @@ export default {
   methods: {
     logout () {
       logout(this.$root)
-      this.$router.push('/organisations')
-    },
-    login () {
-      login(this.email, this.password, this.$root).then(data => {
-        this.$router.push('/organisations')
-      })
-    },
-    signup () {
-      this.error = null
-      signup({
-        email: this.email,
-        name: this.name,
-        password: this.password
-      }).then(() => {
-        this.$router.push('/organisations')
-      }).catch(err => {
-        this.error = err.response.data.error
-        console.error('Signup err', err)
-      })
+      this.$router.push('/')
     },
 
     // toggled() {

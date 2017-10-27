@@ -46,7 +46,7 @@ export default {
  methods: {
     login () {
       login(this.email, this.password, this.$root).then(data => {
-        this.$router.push('/organisations')
+        this.$router.push('/')
       })
     },
   },
