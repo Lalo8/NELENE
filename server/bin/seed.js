@@ -7,13 +7,9 @@ const Organisation = require('../models/organisation');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/nelene', {
   	useMongoClient: true,
   });
-const salt = bcrypt.genSaltSync(bcryptSalt);
-const encryptedPass1 = bcrypt.hashSync("africa", salt);
-const encryptedPass2 = bcrypt.hashSync('ukraine', salt);
 
 const admin = new User({
 	username: 'Elodie',
-	password: encryptedPass1,
 	email: 'elodie.wanang@gmail.com', 
 	status: 'entrepreneur',
 	isAdmin: true,
