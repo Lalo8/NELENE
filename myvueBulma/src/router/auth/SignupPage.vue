@@ -1,5 +1,5 @@
 <template>
-<form @submit.prevent="login">
+<form @submit.prevent="signup">
         <div class="modal-card" style="width:500px">
                 <section class="modal-card-body">
                     <b-field label="Email">

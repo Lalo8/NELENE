@@ -1,6 +1,6 @@
 <template> 
 <ul>
-<li v-for="organisation in organisations">
+<li v-for="organisation in organisations" :key="organisation._id">
 <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
@@ -24,7 +24,7 @@
       <p>{{organisation.description}}</p>
       <br>
     <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
-    <b-tag rounded type="is-warning is-medium">{{organisation.needs}}</b-tag>
+    <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
     <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
     </div>
   </div>

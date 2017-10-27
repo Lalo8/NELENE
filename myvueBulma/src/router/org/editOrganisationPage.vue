@@ -77,48 +77,48 @@
 </template>
 
 <script>
+import { editOrganisation, getOrganisation } from "@/api/organisations";
 
-import { editOrganisation, getOrganisation } from '@/api/organisations'
 export default {
-    data() {
-        return {
-            organisation: {
-                name:"",
-                description:"",
-                contact:"",
-                address:"",
-                country:"",
-                city:"",
-                category:"",
-                needs:[],
-            },
-            
-            errors: [],
-            selectedOptions: []
-        }
-    },
-    methods: {
-        
-        editOrganisation() {
-            // this.organisation.name = "Paps"
-            // this.organisation.description = "Geolocation delivery service app"
-            // this.organisation.contact = "contact@paps.com"
-            // this.organisation.address = "2 ruoe"
-            // this.organisation.country = "Sénégal"
-            // this.organisation.city = "Dakar"
-            // this.organisation.category = "startup"
-            // this.organisation.needs = "seed funding"
-            // this.organisation.ownerId = "59f0ab43c12c7c4a2bfc0918"
-            editOrganisation(this.$route.params.id,this.organisation).then(organisation => {
-                this.$router.push('/organisations');
-            })
-            
-        }
-    },
-    created () {
-      getOrganisation(this.$route.params.id).then(organisation => {
-        this.organisation = organisation
-      })
+  data() {
+    return {
+      organisation: {
+        name: "",
+        description: "",
+        contact: "",
+        address: "",
+        country: "",
+        city: "",
+        category: "",
+        needs: []
+      },
+      errors: [],
+      selectedOptions: []
+    };
+  },
+  methods: {
+    editOrganisation() {
+      // this.organisation.name = "Paps"
+      // this.organisation.description = "Geolocation delivery service app"
+      // this.organisation.contact = "contact@paps.com"
+      // this.organisation.address = "2 ruoe"
+      // this.organisation.country = "Sénégal"
+      // this.organisation.city = "Dakar"
+      // this.organisation.category = "startup"
+      // this.organisation.needs = "seed funding"
+      // this.organisation.ownerId = "59f0ab43c12c7c4a2bfc0918"
+      editOrganisation(
+        this.$route.params.id,
+        this.organisation
+      ).then(organisation => {
+        this.$router.push("/organisations");
+      });
     }
+  },
+  created() {
+    getOrganisation(this.$route.params.id).then(organisation => {
+      this.organisation = organisation;
+    });
   }
-  </script>
+};
+</script>
