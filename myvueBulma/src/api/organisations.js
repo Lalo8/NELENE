@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const service = axios.create({
-  baseURL: baseURL: process.env.NODE_ENV === "production" ? '/api' : "http://localhost:3000/api/organisations",
+  baseURL: process.env.NODE_ENV === "production" ? '/api' : "http://localhost:3000/api/organisations",
 });
 
 export function getOrganisations() {

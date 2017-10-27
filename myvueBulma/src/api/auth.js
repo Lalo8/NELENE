@@ -3,11 +3,10 @@ import axios from 'axios';
 function errHandler(err) {
   console.error('API', err);
 }
-
 const auth = axios.create({
-  baseURL: 'baseURL: process.env.NODE_ENV === "production" ? '/api' : "http://localhost:3000/api"',
+  baseURL: process.env.NODE_ENV === "production" ? '/api': "http://localhost:3000/api",
 });
-
+//hello
 function saveUserInfo({ token, user }) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   localStorage.setItem('token', token);
