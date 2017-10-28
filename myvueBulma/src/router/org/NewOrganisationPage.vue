@@ -100,7 +100,7 @@ export default {
             // this.organisation.ownerId = "59f0ab43c12c7c4a2bfc0918"
             addNewOrganisation(this.organisation).then(organisation => {
                 console.log("Organisation created: ", organisation)
-                this.$router.push('/organisations');
+                this.$router.push('/');
             })
             
         }

@@ -35,6 +35,12 @@
                             <b-icon icon="link"></b-icon>
                             My Profile
                     </b-dropdown-item>
+                     <b-dropdown-item value="home">
+                        <b-icon icon="home"></b-icon>
+                        <a href="" class="navbar-item" href="/new">
+                       Add an organisation
+                       </a>
+                    </b-dropdown-item>
                     <b-dropdown-item value="home">
                         <b-icon icon="home"></b-icon>
                        My organisations
