@@ -23,7 +23,7 @@
 
     <div class="content">
       <p>{{organisation.description}}</p>
-      <a class="button is-success is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
+      <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
       <br>
     
     <br>
