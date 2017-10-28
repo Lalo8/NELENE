@@ -21,7 +21,7 @@ router.get('/:id', (req,res, next) => {
     }).catch(err => next(err))
 }),
 
-router.post('/', passport.authenticate('jwt', config.jwtSession), (req,res)=> {
+router.post('/',passport.authenticate('jwt', config.jwtSession), (req,res)=> {
     const {
         name,
         description,

@@ -9,7 +9,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/nelene', {
   });
 
 const admin = new User({
-	username: 'Elodie',
+	name: 'Elodie',
 	email: 'elodie.wanang@gmail.com', 
 	status: 'entrepreneur',
 	isAdmin: true,
