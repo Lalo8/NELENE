@@ -1,7 +1,8 @@
 
 <template>
     <section>
-    <div class="banner"></div>  
+    <div class="banner">
+    </div>  
         <b-tabs position="is-centered" class="block"v-model="activeTab">
             <b-tab-item label="Description">
                <div class="card">
@@ -9,24 +10,27 @@
                         <div class="media">
                             <div class="media-left">
                                 <figure class="image is-128x128">
-                                <img src="https://bulma.io/images/placeholders/256x256.png" alt="Placeholder image">
+                                     <img src="https://bulma.io/images/placeholders/256x256.png" alt="Placeholder image">
                                 </figure>
                             </div>
                         </div>
-                        <div class="media-content">
-                        <div class="content">
-                        <p class="title">Organisation Name</p>
-                        <br>
-                        <p class="subtitle">Enim culpa veniam aliqua do adipisicing incididunt eu. Lorem sunt voluptate ea ad ea ea nisi. 
-                            Ea pariatur laborum laboris irure velit elit ex irure. 
-                            Nostrud nisi minim cupidatat nostrud dolore enim veniam aute ut veniam minim est cillum eu. 
-                            Excepteur quis fugiat irure mollit sint aliqua nostrud nisi id ex incididunt laborum sint.
-                            <br>
-                            Enim culpa veniam aliqua do adipisicing incididunt eu. Lorem sunt voluptate ea ad ea ea nisi. 
-                            Ea pariatur laborum laboris irure velit elit ex irure. 
-                            Nostrud nisi minim cupidatat nostrud dolore enim veniam aute ut veniam minim est cillum eu. 
-                            Excepteur quis fugiat irure mollit sint aliqua nostrud nisi id ex incididunt laborum sint.</p>
-                            <a class="button is-primary is-focus is-medium"> I want to help ! </a>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p class="title"v-model="organisation.name">{{organisation.name}}
+                                    </p>
+                                    <p class="subtitle" v-model="organisation.description">{{organisation.description}} </p>
+                            <button class="button is-primary is-medium" @click="isCardModalActive = true"> I want to help ! 
+                            </button>
+                                <b-modal :active.sync="isCardModalActive" :width="640">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="content centered">
+                                                <p class="title">GREAT ! </p>
+                                                <p class="subtitle" style="margin-top:3px">For that, you just need to send a message to organisation.contact</p>
+                                            </div>
+                                        </div>
+                                   </div>
+                                </b-modal>
                         </div>
                     </div>
                     </div>
@@ -76,7 +80,7 @@
                     <p class="title">
                     <strong>John Smith</strong> </p>
                     <br>
-                    <p class="subtitle">
+                    <p class="subtitle" >
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
                     </p>
                 </div>
@@ -130,21 +134,26 @@
             </b-tab-item>
 
             <b-tab-item label="Current Needs">
-                Nunc nec velit nec libero vestibulum eleifend.
-                Curabitur pulvinar congue luctus.
-                Nullam hendrerit iaculis augue vitae ornare.
-                Maecenas vehicula pulvinar tellus, id sodales felis lobortis eget.
+                <b-tag class="subtitle" v-for="need in organisation.needs" :key="need" >{{need}}</b-tag>
             </b-tab-item>
         </b-tabs>
     </section>
 </template>
 
 <script>
+
+import { getOrganisation } from "@/api/organisations";
     export default {
         data() {
             return {
-                activeTab: 0
+                activeTab: 0,
+                isCardModalActive: false
             }
+        },
+        created() {
+            getOrganisation(this.$route.params.id).then(organisation => {
+             this.organisation = organisation;
+    });
         }
     }
 </script>
@@ -177,6 +186,8 @@ margin-bottom: 0px;
     margin: 30px auto;
     border: none;
 }
-
+.centered{
+text-align:center
+}
 
 </style>

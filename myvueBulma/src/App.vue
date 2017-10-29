@@ -54,7 +54,7 @@
   </div>
 </nav>
 <div class="subnavbar is-primary">
-<a href="/"><h1>NEL℈NE</h1></a>
+<a href="/"><img src="./assets/logo.png" alt=""></a>
 </div>
 
 <section>
@@ -141,6 +141,9 @@ document.addEventListener('DOMContentLoaded', function () {
   padding-top : 30px;
   font-size:80px;
   color: white;
+}
+.subnavbar img {
+  max-width : 35%;
 }
 
 
