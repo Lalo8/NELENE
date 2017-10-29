@@ -16,21 +16,21 @@
                         </div>
                             <div class="media-content">
                                 <div class="content">
-                                    <p class="title"v-model="organisation.name">{{organisation.name}}
+                                    <p class="title">{{organisation.name}}
                                     </p>
                                     <p class="subtitle" v-model="organisation.description">{{organisation.description}} </p>
-                            <button class="button is-primary is-medium" @click="isCardModalActive = true"> I want to help ! 
-                            </button>
-                                <b-modal :active.sync="isCardModalActive" :width="640">
-                                    <div class="card">
-                                        <div class="card-content">
-                                            <div class="content centered">
-                                                <p class="title">GREAT ! </p>
-                                                <p class="subtitle" style="margin-top:3px">For that, you just need to send a message to organisation.contact</p>
+                                        <button class="button is-primary is-medium" @click="isCardModalActive = true"> I want to help ! 
+                                        </button>
+                                            <b-modal :active.sync="isCardModalActive" :width="640">
+                                                <div class="card">
+                                                    <div class="card-content">
+                                                        <div class="content centered">
+                                                            <p class="title">GREAT ! </p>
+                                                            <p class="subtitle" style="margin-top:3px" v-model="organisation.contact">For that, you just need to send a message to <a href="mailto:">{{organisation.contact}}</a></p>
+                                                        </div>
+                                                    </div>
                                             </div>
-                                        </div>
-                                   </div>
-                                </b-modal>
+                                            </b-modal>
                         </div>
                     </div>
                     </div>
@@ -134,7 +134,24 @@
             </b-tab-item>
 
             <b-tab-item label="Current Needs">
-                <b-tag class="subtitle" v-for="need in organisation.needs" :key="need" >{{need}}</b-tag>
+                <div class="card">
+                    <div class="card-content centered">
+                        <div class="need" v-for="need in organisation.needs" :key="need">
+                            <figure class="image is-150x150" v-if="need === 'recruitment'" >
+                                <img src="../../assets/rn.png">
+
+                            </figure>
+
+                            <figure class="image is-150x150" v-if="need === 'location'">
+                            <img src="../../assets/ln.png">
+                            </figure>
+                            <b-tag class="subtitle" rounded type="is-warning is-medium">
+                                {{need}}
+                            </b-tag>
+                        </div>
+                        
+                    </div>
+                </div>
             </b-tab-item>
         </b-tabs>
     </section>
@@ -170,7 +187,9 @@ import { getOrganisation } from "@/api/organisations";
 }
 .card-content{
     display: flex;
-    padding: 30px;
+    padding: 50px 30px;
+    justify-content: center
+    ;
 }
 p {
 margin-left: 10px;
@@ -188,6 +207,17 @@ margin-bottom: 0px;
 }
 .centered{
 text-align:center
+}
+.need{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    width: 200px;
+
+}
+
+span.tag.subtitle.is-warning.is-medium.is-rounded {
+    margin : 10px;
 }
 
 </style>
