@@ -33,7 +33,8 @@ const incubators =[
 	city: "Cape Town",
 	category: 'incubator',
 	status: 'accepted',
-}), new Organisation({
+	needs:['recruitment','location']
+	}), new Organisation({
 	name: "Nairobi Garage Ngong Road",
 	description: "Fully serviced, coworking office space for startups, techies and entrepreneurs. For more information - check up web site https://nairobigarage.com/",
 	contact: "ngongroad@nairobigarage.com",
