@@ -38,10 +38,14 @@
                     </b-dropdown-item>
                     <b-dropdown-item value="home">
                         <b-icon icon="home"></b-icon>
+                       <a href='/'>All organisations</a> 
+                    </b-dropdown-item>
+                    <b-dropdown-item value="home">
+                        <b-icon icon="home"></b-icon>
                        My organisations
                     </b-dropdown-item>
                     <b-dropdown-item value="logout">
-                    <a class="navbar-item" @click.prevent="logout"href="#">
+                    <a @click.prevent="logout"href="#">
                          Logout
                         <b-icon icon="exit_to_app"></b-icon> 
                     </a> 
@@ -66,7 +70,7 @@
 </template>
 
 <script>
-import { logout } from '@/api/auth'
+import { logout, checkUser } from '@/api/auth'
 export default {
 
   name: 'app',
@@ -74,8 +78,12 @@ export default {
     return {
       email:'',
       password:'',
-      name:''
+      name:'',
+      active:false
     }
+  },
+  created () {
+    checkUser(this.$root)
   },
   methods: {
     logout () {

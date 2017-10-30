@@ -1,20 +1,7 @@
 <template> 
 <div>
-  <p class="content"><b>Selected:</b> {{ selected }}</p>
-  <div class="searchbar">
-    <!-- <b-field  position="is-centered" label="Find a name">
-            <b-autocomplete
-                v-model="name"
-                placeholder="e.g. Paps"
-                :keep-first="keepFirst"
-                :data="filteredDataObj"
-                field="organisation.name"
-                @select="option => selected = option">
-            </b-autocomplete>
-        </b-field> -->
-  </div>
 <ul>
-<li v-for="organisation in organisations" :key="organisation._id">
+<li v-for="organisation in organisations" :key="req.user._id">
 <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
@@ -50,41 +37,23 @@
 </div>
 </li>
 </ul>
-<footer>
-<a href="/login" class="button is-primary is-outlined is-large is-focused" v-if="!$root.user">Want to add organisations ? Let's login</a>
-<a href="/new"class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</a>
-</footer>
 </div>
 </template>
 
 <script>
-import { getOrganisations} from '@/api/organisations'
+import { getOrganisations } from '@/api/organisations'
 
 export default {
   data() {
     return {
       organisations: [],
-      errors: [],
-      selected: null,
-      name: '',
-
+      errors: []
     }
   },
-  // computed: {
-  //           filteredDataObj() {
-  //               return this.organisations.filter((option) => {
-  //                   return option.organisation.name
-  //                       .toString()
-  //                       .toLowerCase()
-  //                       .indexOf(this.name.toLowerCase()) >= 0
-  //               })
-  //           }
-  //       },
-
   created() {
     getOrganisations().then(organisations => {
-      this.organisations = organisations
-    })
+      this.organisations = organisations;
+    });
   }
 }
 
@@ -94,10 +63,6 @@ export default {
 footer {
   width: 400px;
   margin: 40px auto;
-}
-.searchbar{
-margin: 30px auto;
-max-width: 700px;
 }
 .card{
   max-width: 25rem;
@@ -131,14 +96,5 @@ li{
   @media(min-width: 56rem) {
     width: 33.3333%;
   }
-}
-span.icon {
-    color: #dbdbdb;
-    height: 1.5em;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    width: 1.60em;
-    z-index: 4;
 }
 </style>

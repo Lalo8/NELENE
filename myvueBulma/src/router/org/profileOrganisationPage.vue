@@ -1,6 +1,6 @@
 
 <template>
-    <section>
+    <section v-if="organisation">
     <div class="banner">
     </div>  
         <b-tabs position="is-centered" class="block"v-model="activeTab">
@@ -14,23 +14,24 @@
                                 </figure>
                             </div>
                         </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p class="title">{{organisation.name}}
-                                    </p>
-                                    <p class="subtitle" v-model="organisation.description">{{organisation.description}} </p>
-                                        <button class="button is-primary is-medium" @click="isCardModalActive = true"> I want to help ! 
-                                        </button>
-                                            <b-modal :active.sync="isCardModalActive" :width="640">
-                                                <div class="card">
-                                                    <div class="card-content">
-                                                        <div class="content centered">
-                                                            <p class="title">GREAT ! </p>
-                                                            <p class="subtitle" style="margin-top:3px" v-model="organisation.contact">For that, you just need to send a message to <a href="mailto:">{{organisation.contact}}</a></p>
-                                                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p class="title">
+                                    {{organisation.name}}
+                                </p>
+                                <p class="subtitle">Organisation.description </p>
+                                    <button class="button is-primary is-medium" @click="isCardModalActive = true"> I want to help ! 
+                                    </button>
+                                        <b-modal :active.sync="isCardModalActive" :width="640">
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <div class="content centered">
+                                                        <p class="title">GREAT ! </p>
+                                                        <p class="subtitle" style="margin-top:3px">For that, you just need to send a message to <a href="mailto:"></a></p>
                                                     </div>
+                                                </div>
                                             </div>
-                                            </b-modal>
+                                        </b-modal>
                         </div>
                     </div>
                     </div>
@@ -134,7 +135,7 @@
             </b-tab-item>
 
             <b-tab-item label="Current Needs">
-                <div class="card">
+                <!-- <div class="card">
                     <div class="card-content centered">
                         <div class="need" v-for="need in organisation.needs" :key="need">
                             <figure class="image is-150x150" v-if="need === 'recruitment'" >
@@ -149,75 +150,71 @@
                                 {{need}}
                             </b-tag>
                         </div>
-                        
                     </div>
-                </div>
+                </div> -->
             </b-tab-item>
         </b-tabs>
     </section>
 </template>
 
 <script>
-
 import { getOrganisation } from "@/api/organisations";
-    export default {
-        data() {
-            return {
-                activeTab: 0,
-                isCardModalActive: false
-            }
-        },
-        created() {
-            getOrganisation(this.$route.params.id).then(organisation => {
-             this.organisation = organisation;
+export default {
+  data() {
+    return {
+      activeTab: 0,
+      isCardModalActive: false,
+      organisation: null
+    };
+  },
+  created() {
+    getOrganisation(this.$route.params.id).then(organisation => {
+      this.organisation = organisation;
     });
-        }
-    }
+  }
+};
 </script>
 
 <style scoped>
 .banner {
-    width:100%;
-    height:400px;
-    background-color: #CCCCCC;
-
+  width: 100%;
+  height: 400px;
+  background-color: #cccccc;
 }
 .subtitle {
-    font-size: 20px;
+  font-size: 20px;
 }
-.card-content{
-    display: flex;
-    padding: 50px 30px;
-    justify-content: center
-    ;
+.card-content {
+  display: flex;
+  padding: 50px 30px;
+  justify-content: center;
 }
 p {
-margin-left: 10px;
-margin-bottom: 0px;
+  margin-left: 10px;
+  margin-bottom: 0px;
 }
 .title {
-        margin-top: 5px;
-        font-size: 30px;
+  margin-top: 5px;
+  font-size: 30px;
 }
 
-.card, article {
-    width: 80%;
-    margin: 30px auto;
-    border: none;
+.card,
+article {
+  width: 80%;
+  margin: 30px auto;
+  border: none;
 }
-.centered{
-text-align:center
+.centered {
+  text-align: center;
 }
-.need{
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px;
-    width: 200px;
-
+.need {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  width: 200px;
 }
 
 span.tag.subtitle.is-warning.is-medium.is-rounded {
-    margin : 10px;
+  margin: 10px;
 }
-
 </style>

@@ -1,18 +1,7 @@
 <template> 
 <div>
-  <p class="content"><b>Selected:</b> {{ selected }}</p>
-  <div class="searchbar">
-    <!-- <b-field  position="is-centered" label="Find a name">
-            <b-autocomplete
-                v-model="name"
-                placeholder="e.g. Paps"
-                :keep-first="keepFirst"
-                :data="filteredDataObj"
-                field="organisation.name"
-                @select="option => selected = option">
-            </b-autocomplete>
-        </b-field> -->
-  </div>
+
+    <h1 position="is-centered">Let's do some cleanup ! </h1>
 <ul>
 <li v-for="organisation in organisations" :key="organisation._id">
 <div class="card">
@@ -35,30 +24,34 @@
     </div>
 
     <div class="content">
-      <p>{{organisation.description}}</p>
-      <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
-      <br>
-    
-    <br>
-    <div>
-    <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
-    <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
-    <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
+        <p>{{organisation.description}}</p>
+        <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
+        <br>
+        
+        <br>
+        <!-- <div>
+            <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
+            <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
+            <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
+        </div> -->
     </div>
-    </div>
+    <div class="card-footer">
+        <button @click="" class="button card-footer-item is-warning is-medium">Edit</button>
+        <button @click="deleteOrganisation(organisation._id)" class="button card-footer-item is-danger is-medium" >Delete</button>
+   </div>
   </div>
 </div>
 </li>
 </ul>
 <footer>
 <a href="/login" class="button is-primary is-outlined is-large is-focused" v-if="!$root.user">Want to add organisations ? Let's login</a>
-<a href="/new"class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</a>
+<a @click="removeOrganisation(id)" class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</a>
 </footer>
 </div>
 </template>
 
 <script>
-import { getOrganisations} from '@/api/organisations'
+import { getOrganisations, removeOrganisation} from '@/api/organisations'
 
 export default {
   data() {
@@ -68,6 +61,14 @@ export default {
       selected: null,
       name: '',
 
+    }
+  },
+  methods:{
+    deleteOrganisation(id) {
+        removeOrganisation(id).then(() => {
+            const index = this.organisations.findIndex((organisation) => organisation._id === id )
+            this.organisations.splice(index, 1)
+        });
     }
   },
   // computed: {
@@ -91,6 +92,12 @@ export default {
 </script>
 
 <style scoped>
+h1{
+    font-size: 40px;
+    margin: 30px auto;
+    font-weight: bold;
+}
+
 footer {
   width: 400px;
   margin: 40px auto;
@@ -131,6 +138,12 @@ li{
   @media(min-width: 56rem) {
     width: 33.3333%;
   }
+}
+.card-content{
+    padding-bottom : 0px;
+}
+.card-footer {
+    padding-bottom: 20px;
 }
 span.icon {
     color: #dbdbdb;

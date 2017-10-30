@@ -6,7 +6,9 @@ import SignupPage from '@/router/auth/SignupPage'
 import OrganisationPage from '@/router/org/OrganisationPage'
 import NewOrganisationPage from '@/router/org/NewOrganisationPage'
 import profileOrganisationPage from '@/router/org/profileOrganisationPage'
+import profileUserPage from '@/router/profiles/profileUserPage'
 import editOrganisationPage from '@/router/org/editOrganisationPage'
+import profileAdminPage from '@/router/profiles/profileAdminPage'
 import { checkUser } from '@/api/auth';
 import Buefy from 'buefy';
 import Vuetify from 'vuetify'
@@ -57,16 +59,6 @@ const router = new Router({
       },
     }, 
     {
-      path: '/organisations',
-      component: OrganisationPage,
-      meta: {
-        // the meta object can contain any information
-        // about the route that you may want to use
-        // elsewhere, like in beforeEach
-        requiresNonAuth: true,
-      },
-    },
-    {
       path: '/new',
       component: NewOrganisationPage,
       meta: {
@@ -89,6 +81,28 @@ const router = new Router({
         // about the route that you may want to use
         // elsewhere, like in beforeEach
         requiresNonAuth: true,
+      },
+
+    },
+    {
+      path: '/user/profile',
+      component: profileUserPage,
+      meta: {
+        // the meta object can contain any information
+        // about the route that you may want to use
+        // elsewhere, like in beforeEach
+        requiresNonAuth: true,
+      },
+
+    },
+    {
+      path: '/user/profile/admin',
+      component: profileAdminPage,
+      meta: {
+        // the meta object can contain any information
+        // about the route that you may want to use
+        // elsewhere, like in beforeEach
+        requiresnonAuth: true,
       },
 
     }
