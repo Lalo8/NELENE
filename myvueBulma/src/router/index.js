@@ -102,7 +102,8 @@ const router = new Router({
         // the meta object can contain any information
         // about the route that you may want to use
         // elsewhere, like in beforeEach
-        requiresnonAuth: true,
+        requiresAuth: true,
+        isAdmin: true, 
       },
 
     }

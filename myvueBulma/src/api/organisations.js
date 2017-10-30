@@ -7,12 +7,18 @@ const service = axios.create({
 export function getOrganisations() {
     return service.get('/').then(res => res.data)
 }
-
 export function getOrganisation(id) {
   return service.get(id).then(res => res.data)
 }
 export function removeOrganisation(id) {
   return service.delete(id).then(() => {})
+}
+export function getOrganisationsByOwner(id){
+  return service.get('/',{
+    params: {
+      ownerId:id
+    }
+  }).then(res => res.data)
 }
 export function addNewOrganisation(organisation) {
   return service.post('/', organisation).then(res => res.data)

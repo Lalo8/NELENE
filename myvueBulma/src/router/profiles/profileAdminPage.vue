@@ -36,7 +36,7 @@
         </div> -->
     </div>
     <div class="card-footer">
-        <button @click="" class="button card-footer-item is-warning is-medium">Edit</button>
+        <a :href="'/organisations/'+ organisation._id" class="button card-footer-item is-warning is-medium">Edit</a>
         <button @click="deleteOrganisation(organisation._id)" class="button card-footer-item is-danger is-medium" >Delete</button>
    </div>
   </div>
@@ -45,13 +45,13 @@
 </ul>
 <footer>
 <a href="/login" class="button is-primary is-outlined is-large is-focused" v-if="!$root.user">Want to add organisations ? Let's login</a>
-<a @click="removeOrganisation(id)" class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</a>
+<a href="/new" class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</a>
 </footer>
 </div>
 </template>
 
 <script>
-import { getOrganisations, removeOrganisation} from '@/api/organisations'
+import { getOrganisations, removeOrganisation, editOrganisation} from '@/api/organisations'
 
 export default {
   data() {

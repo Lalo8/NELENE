@@ -1,7 +1,7 @@
 <template> 
 <div>
 <ul>
-<li v-for="organisation in organisations" :key="req.user._id">
+<li v-for="organisation in organisations" :key="organisation._id">
 <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
@@ -22,16 +22,17 @@
     </div>
 
     <div class="content">
-      <p>{{organisation.description}}</p>
-      <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
-      <br>
-    
-    <br>
-    <div>
-    <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
-    <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
-    <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
-    </div>
+        <p>{{organisation.description}}</p>
+        <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
+        <br>
+      <div>
+        <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
+        <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
+        <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
+      </div>
+      <div class="card-footer">
+        <a :href="'/organisations/'+ organisation._id" class="button card-footer-item is-warning is-medium">Edit</a>
+     </div>
     </div>
   </div>
 </div>
@@ -41,7 +42,7 @@
 </template>
 
 <script>
-import { getOrganisations } from '@/api/organisations'
+import { getOrganisations,getOrganisationsByOwner } from '@/api/organisations'
 
 export default {
   data() {
@@ -51,7 +52,7 @@ export default {
     }
   },
   created() {
-    getOrganisations().then(organisations => {
+    getOrganisationsByOwner(this.$root.user._id).then(organisations => {
       this.organisations = organisations;
     });
   }

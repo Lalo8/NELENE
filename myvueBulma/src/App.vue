@@ -21,36 +21,44 @@
           Signup
         </router-link> 
          <b-dropdown v-model="navigation" v-if="$root.user"position="is-bottom-left">
-                    <a class="navbar-item" slot="trigger">
-                       <b-icon icon="home"></b-icon> <span>My profile</span>
-                         
-                        <b-icon icon="arrow_drop_down"></b-icon>
-                    </a>
-
-                    <b-dropdown-item custom>
-                        Logged as <b></b>
-                    </b-dropdown-item>
-                    <hr class="dropdown-divider">
-                    <b-dropdown-item has-link>
-                            <b-icon icon="link"></b-icon>
-                            My Profile
-
-                    </b-dropdown-item>
-                    <b-dropdown-item value="home">
-                        <b-icon icon="home"></b-icon>
-                       <a href='/'>All organisations</a> 
-                    </b-dropdown-item>
-                    <b-dropdown-item value="home">
-                        <b-icon icon="home"></b-icon>
-                       My organisations
-                    </b-dropdown-item>
-                    <b-dropdown-item value="logout">
-                    <a @click.prevent="logout"href="#">
-                         Logout
-                        <b-icon icon="exit_to_app"></b-icon> 
-                    </a> 
-                    </b-dropdown-item>
-                </b-dropdown>  
+            <a class="navbar-item" slot="trigger">
+              <b-icon icon="home">
+              </b-icon> 
+              <span>My profile</span>
+            </a>
+            <b-dropdown-item custom>
+              <b-icon icon="person">
+              </b-icon>
+              Logged as <b>{{$root.user.name}}</b>
+            </b-dropdown-item>
+            <hr class="dropdown-divider">
+            <b-dropdown-item has-link>
+              <b-icon icon="person">
+              </b-icon>
+              My Profile
+            </b-dropdown-item>
+            <b-dropdown-item value="home">
+              <b-icon icon="home">
+              </b-icon>
+                <a href='/'>All organisations</a> 
+                
+            </b-dropdown-item>
+            <b-dropdown-item value="home" v-if="$root.user.isAdmin===true">
+              <b-icon icon="home">
+              </b-icon>
+                <a href='/user/profile/admin'>All organisations</a>  
+            </b-dropdown-item>
+            <b-dropdown-item value="home">
+              <b-icon icon="home">
+              </b-icon>
+                <a href='/user/profile'>My organisations</a>
+            </b-dropdown-item>
+            <b-dropdown-item value="logout">
+              <b-icon icon="exit_to_app">
+              </b-icon> 
+                 <a @click.prevent="logout"href="#">Logout</a> 
+            </b-dropdown-item>
+          </b-dropdown>  
                 
        
       </div>
@@ -70,7 +78,7 @@
 </template>
 
 <script>
-import { logout, checkUser } from '@/api/auth'
+import { logout, checkUser,getOrganisation } from '@/api/auth'
 export default {
 
   name: 'app',
@@ -79,7 +87,9 @@ export default {
       email:'',
       password:'',
       name:'',
-      active:false
+      active:false,
+      organisations:[],
+
     }
   },
   created () {
