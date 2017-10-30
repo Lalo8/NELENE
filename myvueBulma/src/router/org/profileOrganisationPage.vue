@@ -19,7 +19,7 @@
                                 <p class="title">
                                     {{organisation.name}}
                                 </p>
-                                <p class="subtitle">Organisation.description </p>
+                                <p class="subtitle">{{organisation.description}} </p>
                                     <button class="button is-primary is-medium" @click="isCardModalActive = true"> I want to help ! 
                                     </button>
                                         <b-modal :active.sync="isCardModalActive" :width="640">
@@ -27,7 +27,7 @@
                                                 <div class="card-content">
                                                     <div class="content centered">
                                                         <p class="title">GREAT ! </p>
-                                                        <p class="subtitle" style="margin-top:3px">For that, you just need to send a message to <a href="mailto:"></a></p>
+                                                        <p class="subtitle" style="margin-top:3px">For that, you just need to send a message to <a href="mailto:"></a>{{organisation.contact}}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@
             </b-tab-item>
 
             <b-tab-item label="Current Needs">
-                <!-- <div class="card">
+                <div class="card">
                     <div class="card-content centered">
                         <div class="need" v-for="need in organisation.needs" :key="need">
                             <figure class="image is-150x150" v-if="need === 'recruitment'" >
@@ -151,7 +151,7 @@
                             </b-tag>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </b-tab-item>
         </b-tabs>
     </section>

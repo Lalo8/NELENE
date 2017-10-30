@@ -1,6 +1,5 @@
 <template> 
 <div>
-  <p class="content"><b>Selected:</b> {{ selected }}</p>
   <div class="searchbar">
     <!-- <b-field  position="is-centered" label="Find a name">
             <b-autocomplete

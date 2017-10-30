@@ -31,7 +31,7 @@
         <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
       </div>
       <div class="card-footer">
-        <a :href="'/organisations/'+ organisation._id" class="button card-footer-item is-warning is-medium">Edit</a>
+        <a :href="'/organisations/'+ organisation._id" class="button card-footer-item is-warning is-small">Edit</a>
      </div>
     </div>
   </div>
@@ -78,6 +78,10 @@ footer {
       filter: contrast(100%);
     }
   }
+}
+.card-footer{
+  margin-top: 10px;
+  border: none;
 }
 
 ul {

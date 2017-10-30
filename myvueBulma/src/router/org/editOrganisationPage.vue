@@ -1,6 +1,5 @@
 <template>
 <div class="container">
-    {{organisation}}
 <section>
 
 <form @submit.prevent="editOrganisation">
