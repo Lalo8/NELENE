@@ -22,7 +22,7 @@
         </router-link> 
          <b-dropdown v-model="navigation" v-if="$root.user"position="is-bottom-left">
             <a class="navbar-item" slot="trigger">
-              <b-icon icon="home">
+              <b-icon icon="address-card">
               </b-icon> 
               <span>My profile</span>
             </a>
@@ -32,11 +32,6 @@
               Logged as <b>{{$root.user.name}}</b>
             </b-dropdown-item>
             <hr class="dropdown-divider">
-            <b-dropdown-item has-link>
-              <b-icon icon="person">
-              </b-icon>
-              My Profile
-            </b-dropdown-item>
   
             <b-dropdown-item value="home" v-if="$root.user.isAdmin">
               <b-icon icon="home">
@@ -49,17 +44,17 @@
                 <a href='/'>All organisations</a> 
             </b-dropdown-item>
             <b-dropdown-item value="home">
-              <b-icon icon="home">
+              <b-icon icon="check">
               </b-icon>
                 <a href='/user/profile'>My organisations</a>
             </b-dropdown-item>
             <b-dropdown-item value="home">
-              <b-icon icon="home">
+              <b-icon icon="plus">
               </b-icon>
                 <a href='/new'>Add an organisation</a>
             </b-dropdown-item>
             <b-dropdown-item value="logout">
-              <b-icon icon="exit_to_app">
+              <b-icon icon="sign-out">
               </b-icon> 
                  <a @click.prevent="logout"href="#">Logout</a> 
             </b-dropdown-item>

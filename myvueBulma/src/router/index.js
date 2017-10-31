@@ -12,14 +12,16 @@ import profileAdminPage from '@/router/profiles/profileAdminPage'
 import mapPage from '@/router/org/mapPage'
 import { checkUser } from '@/api/auth';
 import Buefy from 'buefy';
-import Vuetify from 'vuetify'
+import Vuetify from 'vuetify';
+import Vue2Filters from 'vue2-filters';
+
 import 'buefy/lib/buefy.css';
 
 Vue.use(Buefy,{
   defaultIconPack:'fa'
 });
 Vue.use(Vuetify);
-
+Vue.use(Vue2Filters);
 
 Vue.use(Router)
 

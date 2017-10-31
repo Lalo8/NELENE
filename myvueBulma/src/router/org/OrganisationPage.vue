@@ -1,19 +1,13 @@
 <template> 
 <div>
   <div class="searchbar">
-    <!-- <b-field  position="is-centered" label="Find a name">
-            <b-autocomplete
-                v-model="name"
-                placeholder="e.g. Paps"
-                :keep-first="keepFirst"
-                :data="filteredDataObj"
-                field="organisation.name"
-                @select="option => selected = option">
-            </b-autocomplete>
-        </b-field> -->
+    <b-field type="is-primary">
+    <b-input v-model="search"type="search" icon="search" placeholder="Search a country, a city, a type of organisation..."></b-input>
+    </b-field>
   </div>
+
 <ul>
-<li v-for="organisation in organisations" :key="organisation._id">
+<li v-for="organisation in filterBy(organisations,search)" :key="organisation._id">
 <div class="card">
   <div class="card-image">
     <figure class="image is-3by2" v-if="organisation.type === 'social business'">
@@ -62,7 +56,7 @@
 </template>
 
 <script>
-import { getOrganisations} from '@/api/organisations'
+import {getOrganisations} from '@/api/organisations'
 
 export default {
   data() {
@@ -70,21 +64,18 @@ export default {
       organisations: [],
       errors: [],
       selected: null,
-      name: '',
+      search: '',
+      name:''
 
     }
   },
-  // computed: {
-  //           filteredDataObj() {
-  //               return this.organisations.filter((option) => {
-  //                   return option.organisation.name
-  //                       .toString()
-  //                       .toLowerCase()
-  //                       .indexOf(this.name.toLowerCase()) >= 0
-  //               })
-  //           }
-  //       },
-
+  computed: {
+    filteredOrganisations() {
+      return this.organisations.filter(option => {
+        return option.organisation.name.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
+  },
   created() {
     getOrganisations().then(organisations => {
       this.organisations = organisations
