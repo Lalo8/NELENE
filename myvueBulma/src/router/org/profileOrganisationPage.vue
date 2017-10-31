@@ -146,6 +146,9 @@
                             <figure class="image is-150x150" v-if="need === 'location'">
                             <img src="../../assets/ln.png">
                             </figure>
+                            <figure class="image is-150x150" v-if="need === 'seed funding'">
+                            <img src="../../assets/sn.png">
+                            </figure>
                             <b-tag class="subtitle" rounded type="is-warning is-medium">
                                 {{need}}
                             </b-tag>

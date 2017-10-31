@@ -52,12 +52,18 @@
             <option value="investment">Investment Fund</option>
             </b-select>
         </b-field>
-        <b-field label="Type of needs">
+        <b-field label="Type of needs" >
+            <!-- v-if="organisation.category===startup" -->
             <b-select multiple native-size="3" v-model="organisation.needs">
                 <option value="recruitment">recruitment</option>
                 <option value="location">location</option>
                 <option value="seed funding">seed funding</option>
-                
+            </b-select>
+        </b-field>
+        <b-field label="Type of activity">
+            <b-select placeholder="Select the type of activity your are focused on"  v-model="organisation.type">
+                <option value="tech">tech</option>
+                <option value="social business">social business</option>
             </b-select>
         </b-field>
         <button class="button is-primary">Submit information</button>
@@ -80,6 +86,7 @@ export default {
                 city:"",
                 category:"",
                 needs:[],
+                type:"",
             },
             
             errors: [],

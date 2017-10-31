@@ -89,6 +89,7 @@ export default {
       name:'',
       active:false,
       organisations:[],
+      isAdmin:false
 
     }
   },
