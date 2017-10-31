@@ -9,6 +9,7 @@ import profileOrganisationPage from '@/router/org/profileOrganisationPage'
 import profileUserPage from '@/router/profiles/profileUserPage'
 import editOrganisationPage from '@/router/org/editOrganisationPage'
 import profileAdminPage from '@/router/profiles/profileAdminPage'
+import mapPage from '@/router/org/mapPage'
 import { checkUser } from '@/api/auth';
 import Buefy from 'buefy';
 import Vuetify from 'vuetify'
@@ -106,11 +107,23 @@ const router = new Router({
         isAdmin: true, 
       },
 
+    },
+    {
+      path: '/map',
+      component: mapPage,
+      meta: {
+        // the meta object can contain any information
+        // about the route that you may want to use
+        // elsewhere, like in beforeEach
+        requiresNonAuth: true,
+      },
+
     }
 
 
   ]
 })
+
 
 // The callback passed to beforeEach will
 // get executed every time we try to navigate

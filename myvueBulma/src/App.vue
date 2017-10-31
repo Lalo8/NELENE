@@ -37,21 +37,26 @@
               </b-icon>
               My Profile
             </b-dropdown-item>
-            <b-dropdown-item value="home">
-              <b-icon icon="home">
-              </b-icon>
-                <a href='/'>All organisations</a> 
-                
-            </b-dropdown-item>
-            <b-dropdown-item value="home" v-if="$root.user.isAdmin===true">
+  
+            <b-dropdown-item value="home" v-if="$root.user.isAdmin">
               <b-icon icon="home">
               </b-icon>
                 <a href='/user/profile/admin'>All organisations</a>  
+            </b-dropdown-item>
+            <b-dropdown-item value="home" v-else>
+              <b-icon icon="home">
+              </b-icon>
+                <a href='/'>All organisations</a> 
             </b-dropdown-item>
             <b-dropdown-item value="home">
               <b-icon icon="home">
               </b-icon>
                 <a href='/user/profile'>My organisations</a>
+            </b-dropdown-item>
+            <b-dropdown-item value="home">
+              <b-icon icon="home">
+              </b-icon>
+                <a href='/new'>Add an organisation</a>
             </b-dropdown-item>
             <b-dropdown-item value="logout">
               <b-icon icon="exit_to_app">

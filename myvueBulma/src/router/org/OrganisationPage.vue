@@ -16,10 +16,10 @@
 <li v-for="organisation in organisations" :key="organisation._id">
 <div class="card">
   <div class="card-image">
-    <figure class="image is-4by3" v-if="organisation.type === 'social business'">
+    <figure class="image is-3by2" v-if="organisation.type === 'social business'">
       <img src="../../assets/social.png" alt="Placeholder image">
     </figure>
-    <figure class="image is-4by3" v-if="organisation.type === 'tech'">
+    <figure class="image is-3by2" v-if="organisation.type === 'tech'">
       <img src="../../assets/tech2.png" alt="Placeholder image">
     </figure>
   </div>
