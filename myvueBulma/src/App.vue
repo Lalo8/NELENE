@@ -2,6 +2,9 @@
   <div id="app">
       <nav class="navbar is-primary is-transparent">
         <div class="navbar-brand">
+           <a class="navbar-item" href="/">
+          <h1 class="titlelogo"> NEL&#398;NE</h1>
+           </a>
           <div class="navbar-burger burger" data-target="navDropping" :class="{'is-active': active }">
             <span></span>
             <span></span>
@@ -18,6 +21,16 @@
                 <router-link v-if="!$root.user" to="signup" class="navbar-link">
                   Signup
                 </router-link> 
+                 <router-link v-if="$root.user" to="/" class="navbar-link">
+                 All organisations
+                </router-link> 
+                 <router-link v-if="$root.user" to="/user/profile" class="navbar-link">
+                 My organisation
+                </router-link> 
+                 <router-link v-if="$root.user" to="/new" class="navbar-link">
+                 Add an organisation
+                </router-link> 
+
                 <b-dropdown v-model="navigation" v-if="$root.user"position="is-bottom-left">
                     <a class="navbar-item" slot="trigger">
                       <b-icon class="profile" icon="address-card">
@@ -56,18 +69,50 @@
                       </b-icon> 
                         <a @click.prevent="logout"href="#">Logout</a> 
                     </b-dropdown-item>
-                </b-dropdown>  
+                </b-dropdown>
             </div>
           </div>
         </div>
       </nav>
-      <div class="subnavbar is-primary">
-      <a href="/"><img src="./assets/logo.png" alt=""></a>
-      </div>
     <section>
       <div class="container">
-        <router-view></router-view>
+        <router-view>
+        </router-view> 
       </div>
+       <!-- <aside class="menu" v-if="$root.user">
+                  <p class="menu-label">
+                    General
+                  </p>
+                  <ul class="menu-list">
+                    <li><a>Dashboard</a></li>
+                    <li><a>Customers</a></li>
+                  </ul>
+                  <p class="menu-label">
+                    Administration
+                  </p>
+                  <ul class="menu-list">
+                    <li><a>Team Settings</a></li>
+                    <li>
+                      <a class="is-active">Manage Your Team</a>
+                      <ul>
+                        <li><a>Members</a></li>
+                        <li><a>Plugins</a></li>
+                        <li><a>Add a member</a></li>
+                      </ul>
+                    </li>
+                    <li><a>Invitations</a></li>
+                    <li><a>Cloud Storage Environment Settings</a></li>
+                    <li><a>Authentication</a></li>
+                  </ul>
+                  <p class="menu-label">
+                    Transactions
+                  </p>
+                  <ul class="menu-list">
+                    <li><a>Payments</a></li>
+                    <li><a>Transfers</a></li>
+                    <li><a>Balance</a></li>
+                  </ul>
+                 </aside> -->
     </section>
   </div>
 </template>
@@ -84,8 +129,8 @@ export default {
       name:'',
       active:false,
       organisations:[],
-      isAdmin:false
-
+      isAdmin:false,
+      navigation: null
     }
   },
   created () {
@@ -131,6 +176,12 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <style>
+.titlelogo {
+  color: white; 
+  font-size: 30px;
+  font-weight: bold;
+
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

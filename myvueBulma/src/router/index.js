@@ -117,7 +117,7 @@ const router = new Router({
 
     },
     {
-      path: '/map',
+      path: '/map/map',
       component: mapPage,
       meta: {
         // the meta object can contain any information

@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        {{organisation}}
+        <h1>Let's create a new organisation !</h1>
+        <p>In order for the the organisation page to be as useful as possible, please enter as many details as possible  </p>
         <section>
             <form @submit.prevent="addNewOrganisation">
                 <b-field label="Profile Picture">
