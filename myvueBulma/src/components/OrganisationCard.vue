@@ -1,0 +1,87 @@
+<template>
+    <li>
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-3by2" v-if="organisation.type === 'social business'">
+                    <img src="../assets/social.png" alt="Placeholder image">
+                </figure>
+                <figure class="image is-3by2" v-if="organisation.type === 'tech'">
+                    <img src="../assets/tech2.png" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                <div class="media-left">
+                    <figure class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title is-5">{{organisation.name}}</p>
+                    <p class="subtitle is-7">{{organisation.author}}</p>
+                </div>
+                </div>
+                <div class="content">
+                    <p>{{organisation.description}}</p>
+                    <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view/'+ organisation._id">
+                        Let's know more
+                    </router-link>
+                    <br>
+                    <br>
+                    <div>
+                        <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
+                        <b-tag rounded type="is-warning is-medium">{{organisation.type}}</b-tag>
+                        <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
+                        <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
+                    </div>
+                </div>
+            </div>
+            <div v-if="editable" class="card-footer">
+                <router-link :to="'/organisations/edit/'+ organisation._id" class="button card-footer-item is-warning is-medium">Edit</router-link>
+                <button @click="deleteOrganisation(organisation._id)" class="button card-footer-item is-danger is-medium" >Delete</button>
+            </div>
+        </div>
+    </li>
+</template>
+
+<script>
+export default {
+  props: {
+    organisation: Object,
+    editable: Boolean
+  }
+};
+</script>
+
+<style>
+.card{
+  max-width: 23rem;
+   background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  &:hover {
+    .card__image {
+      filter: contrast(100%);
+    }
+  }
+}
+.card-footer{
+  margin-top: 10px;
+  border: none;
+}
+li{
+  display: flex;
+  padding: 1rem;
+  @media(min-width: 40rem) {
+    width: 50%;
+  }
+  @media(min-width: 56rem) {
+    width: 33.3333%;
+  }
+}
+
+
+</style>

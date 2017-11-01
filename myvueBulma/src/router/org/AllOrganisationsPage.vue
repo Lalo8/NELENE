@@ -2,55 +2,16 @@
   <div>
     <div class="searchbar">
         <b-field type="is-primary" position="is-centered">
-          <b-input v-model="search"type="search" icon="search" placeholder="Search a country, a city, a type of organisation..." expanded>
+          <b-input v-model="search" type="search" icon="search" placeholder="Search a country, a city, a type of organisation..." expanded>
           </b-input>
             <p class="control">
               <button class="button is-primary">Filter</button>
             </p>
         </b-field>
     </div>
-
-      <ul>
-        <li v-for="organisation in filterBy(organisations,search)" :key="organisation._id">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-3by2" v-if="organisation.type === 'social business'">
-                  <img src="../../assets/social.png" alt="Placeholder image">
-              </figure>
-              <figure class="image is-3by2" v-if="organisation.type === 'tech'">
-                  <img src="../../assets/tech2.png" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <p class="title is-5">{{organisation.name}}</p>
-                  <p class="subtitle is-7">{{organisation.author}}</p>
-                </div>
-              </div>
-              <div class="content">
-                <p>{{organisation.description}}</p>
-                <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view/'+ organisation._id">
-                  Let's know more
-                </router-link>
-                <br>
-                <br>
-                <div>
-                  <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
-                  <b-tag rounded type="is-warning is-medium">{{organisation.type}}</b-tag>
-                  <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
-                  <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
+    <organisations-list :organisations="filterBy(organisations,search)">
+      <organisation-card></organisation-card>
+    </organisations-list>
     <footer>
       <router-link to="/login" class="button is-primary is-outlined is-large is-focused" v-if="!$root.user">Want to add organisations ? Let's login</router-link>
       <router-link to="/organisations/add" class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</router-link>
@@ -60,8 +21,13 @@
 
 <script>
 import {getOrganisations} from '@/api/organisations'
+import OrganisationsList from '@/components/OrganisationsList'
 
 export default {
+  components: {
+    OrganisationsList,
+
+  },
   data() {
     return {
       organisations: [],

@@ -1,6 +1,61 @@
 <template> 
   <div>
-    <ul>
+     <organisations-list :organisations="organisations">
+      <organisation-card></organisation-card>
+    </organisations-list>
+  </div>
+</template>
+
+<script>
+import { getOrganisations,getOrganisationsByOwner } from '@/api/organisations'
+import OrganisationsList from '@/components/OrganisationsList'
+
+export default {
+  components: {
+    OrganisationsList,
+  },
+  data() {
+    return {
+      organisations: [],
+      errors: []
+    }
+  },
+  created() {
+    getOrganisationsByOwner(this.$root.user._id).then(organisations => {
+      this.organisations = organisations;
+    });
+  }
+}
+
+</script>
+
+<style scoped>
+footer {
+  width: 400px;
+  margin: 40px auto;
+}
+
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  display: flex;
+  padding: 1rem;
+  @media(min-width: 40rem) {
+    width: 50%;
+  }
+  @media(min-width: 56rem) {
+    width: 33.3333%;
+  }
+}
+</style>
+/* <ul>
       <li v-for="organisation in organisations" :key="organisation._id">
         <div class="card">
           <div class="card-image">
@@ -37,69 +92,4 @@
           </div>
         </div>
       </li>
-    </ul>
-  </div>
-</template>
-
-<script>
-import { getOrganisations,getOrganisationsByOwner } from '@/api/organisations'
-
-export default {
-  data() {
-    return {
-      organisations: [],
-      errors: []
-    }
-  },
-  created() {
-    getOrganisationsByOwner(this.$root.user._id).then(organisations => {
-      this.organisations = organisations;
-    });
-  }
-}
-
-</script>
-
-<style scoped>
-footer {
-  width: 400px;
-  margin: 40px auto;
-}
-.card{
-  max-width: 25rem;
-   background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  &:hover {
-    .card__image {
-      filter: contrast(100%);
-    }
-  }
-}
-.card-footer{
-  margin-top: 10px;
-  border: none;
-}
-
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-li{
-  display: flex;
-  padding: 1rem;
-  @media(min-width: 40rem) {
-    width: 50%;
-  }
-  @media(min-width: 56rem) {
-    width: 33.3333%;
-  }
-}
-</style>
+    </ul> */

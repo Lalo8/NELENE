@@ -24,12 +24,13 @@
                  <router-link v-if="$root.user" to="/" class="navbar-link">
                  All organisations
                 </router-link> 
-                 <router-link v-if="$root.user" to="/user/profile" class="navbar-link">
-                 My organisation
+                 <router-link v-if="$root.user" to="/profile" class="navbar-link">
+                 My organisations
                 </router-link> 
-                 <router-link v-if="$root.user" to="/new" class="navbar-link">
+                 <router-link v-if="$root.user" to="/organisations/add" class="navbar-link">
                  Add an organisation
-                </router-link> 
+                </router-link>  
+                 <a v-if="$root.user" class="navbar-link"@click.prevent="logout"href="#">Logout</a> 
 
                 <b-dropdown v-model="navigation" v-if="$root.user"position="is-bottom-left">
                     <a class="navbar-item" slot="trigger">
@@ -62,7 +63,7 @@
                     <b-dropdown-item value="home">
                       <b-icon icon="plus">
                       </b-icon>
-                        <a href='/new'>Add an organisation</a>
+                        <router-link  to='/organisations/add'>Add an organisation</router-link>
                     </b-dropdown-item>
                     <b-dropdown-item value="logout">
                       <b-icon icon="sign-out">

@@ -1,65 +1,29 @@
 <template> 
     <div>
        <h1 position="is-centered">Let's do some cleanup ! </h1>
-        <ul>
-            <li v-for="organisation in organisations" :key="organisation._id">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                        <img src="../../assets/social.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">{{organisation.name}}</p>
-                                <p class="subtitle is-6">{{organisation.author}}</p>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <p>{{organisation.description}}</p>
-                            <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view/'+ organisation._id">Let's know more </router-link>
-                            <br>
-                            <br>
-                            <!-- <div>
-                                <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
-                                <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
-                                <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
-                            </div> -->
-                        </div>
-                        <div class="card-footer">
-                            <router-link :to="'/organisations/edit/'+ organisation._id" class="button card-footer-item is-warning is-medium">Edit</router-link>
-                            <button @click="deleteOrganisation(organisation._id)" class="button card-footer-item is-danger is-medium" >Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <footer>
-            <router-link to="/login" class="button is-primary is-outlined is-large is-focused" v-if="!$root.user">Want to add organisations ? Let's login</router-link>
-            <router-link to="/new" class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</router-link>
-        </footer>
+        <organisations-list :organisations="organisations" :editable="true">
+            <organisation-card></organisation-card>
+        </organisations-list>
     </div>
 </template>
 
 <script>
 import { getOrganisations, removeOrganisation, editOrganisation} from '@/api/organisations'
+import OrganisationsList from '@/components/OrganisationsList'
 
 export default {
+components: {
+    OrganisationsList,
+  },
   data() {
     return {
       organisations: [],
       errors: [],
       selected: null,
       name: '',
-
     }
-  },
+},
+
   methods:{
     deleteOrganisation(id) {
         removeOrganisation(id).then(() => {
@@ -152,3 +116,39 @@ span.icon {
     z-index: 4;
 }
 </style>
+ /* <ul>
+    <li v-for="organisation in organisations" :key="organisation._id">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                        <img src="../../assets/social.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">{{organisation.name}}</p>
+                                <p class="subtitle is-6">{{organisation.author}}</p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <p>{{organisation.description}}</p>
+                            <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view/'+ organisation._id">Let's know more </router-link>
+                            <br>
+                            <br>
+                            <!-- <div>
+                                <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
+                                <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
+                                <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
+                            </div> -->
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+        </ul> */

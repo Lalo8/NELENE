@@ -6,7 +6,9 @@
   > 
     <gmap-marker
       :position="{ lat: 48.8735, lng: 2.2951 }"
-    ></gmap-marker>
+      ></gmap-marker>
+     <gmap-marker :position="{ lat: 3.319292, lng: 4.4218547 }">
+      </gmap-marker> 
   </gmap-map>
 </template>
 
