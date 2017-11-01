@@ -23,7 +23,7 @@
 
               <div class="content">
                 <p>{{organisation.description}}</p>
-                <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
+                <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view'+ organisation._id">Let's know more </router-link>
                 <br>
                 <div>
                   <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
@@ -31,7 +31,7 @@
                   <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
                 </div>
                 <div class="card-footer">
-                  <a :href="'/organisations/'+ organisation._id" class="button card-footer-item is-warning is-small">Edit</a>
+                  <router-link :href="'/organisations/edit/'+ organisation._id" class="button card-footer-item is-warning is-small">Edit</router-link>
                 </div>
               </div>
           </div>

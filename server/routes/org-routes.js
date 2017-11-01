@@ -5,12 +5,16 @@ const router = express.Router();
 const Organisation = require('../models/organisation');
 const config = require('../config');
 
+
 // Define your endpoints here
-router.get('/', (req,res) => {
-    Organisation.find().then(
+router.get('/', (req,res,next) => {
+    const dbQuery = req.query.ownerId ?
+    Organisation.find({'ownerId':req.query.ownerId}) :
+    Organisation.find()
+    dbQuery.then(
         organisations => {
-            res.json(organisations) 
-    }).catch(err => next(err))
+            res.json(organisations)
+        }).catch(err => next(err))
 })
 
 // Define your endpoints here
@@ -19,9 +23,9 @@ router.get('/:id', (req,res, next) => {
         organisation => {
             res.json(organisation) 
     }).catch(err => next(err))
-}),
+})
 
-router.post('/',passport.authenticate('jwt', config.jwtSession), (req,res)=> {
+router.post('/',passport.authenticate('jwt', config.jwtSession), (req,res,next)=> {
     const {
         name,
         description,

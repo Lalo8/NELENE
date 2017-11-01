@@ -3,41 +3,23 @@ import Router from 'vue-router'
 import HomePage from '@/router/HomePage'
 import LoginPage from '@/router/auth/LoginPage'
 import SignupPage from '@/router/auth/SignupPage'
-import OrganisationPage from '@/router/org/OrganisationPage'
+import AllOrganisationsPage from '@/router/org/AllOrganisationsPage'
 import NewOrganisationPage from '@/router/org/NewOrganisationPage'
-import profileOrganisationPage from '@/router/org/profileOrganisationPage'
-import profileUserPage from '@/router/profiles/profileUserPage'
-import editOrganisationPage from '@/router/org/editOrganisationPage'
-import profileAdminPage from '@/router/profiles/profileAdminPage'
-import mapPage from '@/router/org/mapPage'
+import ProfileOrganisationPage from '@/router/org/ProfileOrganisationPage'
+import ProfileUserPage from '@/router/profiles/ProfileUserPage'
+import EditOrganisationPage from '@/router/org/EditOrganisationPage'
+import AdminPage from '@/router/profiles/AdminPage'
+import MapPage from '@/router/org/MapPage'
 import { checkUser } from '@/api/auth';
-import Buefy from 'buefy';
-import 'vue-googlemaps/dist/vue-googlemaps.css'
-import VueGoogleMaps from 'vue-googlemaps'
-import Vue2Filters from 'vue2-filters'
-
-import 'buefy/lib/buefy.css';
-Vue.use(VueGoogleMaps, {
-  load: {
-    apiKey: 'AIzaSyDuBacGwzcYTG2tpXRlcTc2d6mYk2MZF0c',
-    libraries: ['places'],
-  },
-});
-
-Vue.use(Buefy,{
-  defaultIconPack:'fa'
-});
-Vue.use(Vue2Filters);
 
 Vue.use(Router);
-
 
 const router = new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
-      component: OrganisationPage,
+      component: AllOrganisationsPage,
       meta: {
         // the meta object can contain any information
         // about the route that you may want to use
@@ -68,23 +50,23 @@ const router = new Router({
       },
     }, 
     {
-      path: '/new',
+      path: '/organisations/add',
       component: NewOrganisationPage,
       meta: {
         requiresAuth: true,
       },
     },
     {
-      path: '/organisations/:id',
-      component: editOrganisationPage,
+      path: '/organisations/edit/:id',
+      component: EditOrganisationPage,
       meta: {
         requiresAuth: true,
       },
       
     },
     {
-      path: '/:id',
-      component: profileOrganisationPage,
+      path: '/organisations/view/:id',
+      component: ProfileOrganisationPage,
       meta: {
         // the meta object can contain any information
         // about the route that you may want to use
@@ -94,8 +76,8 @@ const router = new Router({
 
     },
     {
-      path: '/user/profile',
-      component: profileUserPage,
+      path: '/profile',
+      component: ProfileUserPage,
       meta: {
         // the meta object can contain any information
         // about the route that you may want to use
@@ -105,8 +87,8 @@ const router = new Router({
 
     },
     {
-      path: '/user/profile/admin',
-      component: profileAdminPage,
+      path: '/admin',
+      component: AdminPage,
       meta: {
         // the meta object can contain any information
         // about the route that you may want to use
@@ -117,8 +99,8 @@ const router = new Router({
 
     },
     {
-      path: '/map/map',
-      component: mapPage,
+      path: '/overview',
+      component: MapPage,
       meta: {
         // the meta object can contain any information
         // about the route that you may want to use

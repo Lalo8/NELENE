@@ -23,7 +23,7 @@
                         </div>
                         <div class="content">
                             <p>{{organisation.description}}</p>
-                            <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
+                            <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view/'+ organisation._id">Let's know more </router-link>
                             <br>
                             <br>
                             <!-- <div>
@@ -33,7 +33,7 @@
                             </div> -->
                         </div>
                         <div class="card-footer">
-                            <a :href="'/organisations/'+ organisation._id" class="button card-footer-item is-warning is-medium">Edit</a>
+                            <router-link :to="'/organisations/edit/'+ organisation._id" class="button card-footer-item is-warning is-medium">Edit</router-link>
                             <button @click="deleteOrganisation(organisation._id)" class="button card-footer-item is-danger is-medium" >Delete</button>
                         </div>
                     </div>
@@ -41,8 +41,8 @@
             </li>
         </ul>
         <footer>
-            <a href="/login" class="button is-primary is-outlined is-large is-focused" v-if="!$root.user">Want to add organisations ? Let's login</a>
-            <a href="/new" class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</a>
+            <router-link to="/login" class="button is-primary is-outlined is-large is-focused" v-if="!$root.user">Want to add organisations ? Let's login</router-link>
+            <router-link to="/new" class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</router-link>
         </footer>
     </div>
 </template>

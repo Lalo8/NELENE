@@ -33,7 +33,8 @@ const incubators =[
 	city: "Cape Town",
 	category: 'incubator',
 	status: 'accepted',
-	needs:['recruitment','location']
+	needs:['recruitment','location'],
+	type:'tech'
 	}), new Organisation({
 	name: "Nairobi Garage Ngong Road",
 	description: "Fully serviced, coworking office space for startups, techies and entrepreneurs. For more information - check up web site https://nairobigarage.com/",
@@ -43,7 +44,8 @@ const incubators =[
 	city: "Nairobi",
 	category: 'incubator',
 	status: 'pending',
-	location: { type: "Point", coordinates: [ 36.7908265, -1.2981487] }
+	location: { type: "Point", coordinates: [ 36.7908265, -1.2981487] },
+	type:'tech'
 }), new Organisation({
 	name: "La Fabrique",
 	description: "La Fabrique is an incubator focused on social businesses mentoring in West Africa",
@@ -63,7 +65,8 @@ const incubators =[
 	city: "Abuja",
 	category: 'incubator',
 	status: 'pending',
-	location: { type: "Point", coordinates: [ 7.4480174, 9.0389314] }
+	location: { type: "Point", coordinates: [ 7.4480174, 9.0389314] },
+	type:'tech'
 })];
 
 const startups = [new Organisation({
@@ -75,7 +78,8 @@ const startups = [new Organisation({
 	city:"Giza",
 	category: 'startup',
 	status: 'accepted',
-	location: { type: "Point", coordinates: [ 31.1914344, 30.0526922] }
+	location: { type: "Point", coordinates: [ 31.1914344, 30.0526922] },
+	type:'tech'
 }), new Organisation({
 	name: "Jamii Africa",
 	description: "EdgePoint Digital Ltd. For more information - check up web site jamiiafrica.com",
@@ -85,17 +89,21 @@ const startups = [new Organisation({
 	city: "Dar es Salaam",
 	category: 'startup',
 	status: 'accepted',
-	location: { type: "Point", coordinates: [ 39.2655765, -6.7850744] }
+	location: { type: "Point", coordinates: [ 39.2655765, -6.7850744] },
+	type:'tech'
 })]
 
-admin.save().then(admin => {
+User.register(admin, 'africa', (err, admin) => {
+	if (err) return console.error(err)
     incubators.forEach(incubator => incubator.ownerId = admin._id)
     startups.forEach(startup => startup.ownerId = admin._id)
 
 	return Promise.all([
 		...incubators.map(i => i.save()),
 		...startups.map(s => s.save())
-	]).then(() => mongoose.connection.close())
-}).catch(err => console.log(err))
+	])
+	.then(() => mongoose.connection.close())
+	.catch(err => console.log(err))
+})
 
 

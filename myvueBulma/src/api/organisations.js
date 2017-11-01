@@ -16,7 +16,7 @@ export function removeOrganisation(id) {
 export function getOrganisationsByOwner(id){
   return service.get('/',{
     params: {
-      ownerId:id
+      ownerId: id
     }
   }).then(res => res.data)
 }

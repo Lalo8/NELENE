@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const CATEGORIES = [ 'startup', 'incubator', 'investmentfund' ];
 const STATUSES_ORG = [ 'pending', 'accepted', 'rejected'];
 const NEEDS = ['recruitment', 'location', 'seed funding']
-
+const TYPES = ['tech', 'social business']
 const organizationSchema = new Schema({
 	name: {
 		type: String,
@@ -43,6 +43,11 @@ const organizationSchema = new Schema({
 		enum: NEEDS,
 		default: 'recruitment',
 	}],
+	type: {
+		type: String,
+		enum: TYPES,
+		default: 'social business',
+	},
 	status: {
 		type: String,
 		enum: STATUSES_ORG,

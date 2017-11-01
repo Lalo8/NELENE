@@ -62,6 +62,7 @@ router.post('/login', (req, res, next) => {
           user: {
             name: user.name,
             email: user.email,
+            isAdmin: user.isAdmin,
             _id: user._id,
           },
           token,
