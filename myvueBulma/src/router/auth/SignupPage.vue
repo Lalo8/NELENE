@@ -1,39 +1,39 @@
 <template>
-<form @submit.prevent="signup">
-        <div class="modal-card" style="width:500px">
-                <section class="modal-card-body">
-                    <b-field label="Email">
-                        <b-input v-model="email" 
-                            type="email"
-                            placeholder="Your email"
-                            required>
-                        </b-input>
-                    </b-field> 
-                    <b-field label="Name">
-                        <b-input v-model="name" 
-                            type="name"
-                            placeholder="Your name"
-                            required>
-                        </b-input>
-                    </b-field>
+  <form @submit.prevent="signup">
+    <div class="modal-card" style="width:500px">
+            <section class="modal-card-body">
+                <b-field label="Email">
+                    <b-input v-model="email" 
+                        type="email"
+                        placeholder="Your email"
+                        required>
+                    </b-input>
+                </b-field> 
+                <b-field label="Name">
+                    <b-input v-model="name" 
+                        type="name"
+                        placeholder="Your name"
+                        required>
+                    </b-input>
+                </b-field>
 
-                    <b-field label="Password">
-                        <b-input
-                        v-model="password"
-                            type="password"
-                            password-reveal
-                            placeholder="Your password"
-                            required>
-                        </b-input>
-                    </b-field>
+                <b-field label="Password">
+                    <b-input
+                    v-model="password"
+                        type="password"
+                        password-reveal
+                        placeholder="Your password"
+                        required>
+                    </b-input>
+                </b-field>
 
-                    <b-checkbox>Remember me</b-checkbox>
-                </section>
-              <footer class="modal-card-foot">
-                  <button class="button is-primary">Sign up</button>
-              </footer>
-          </div>
-</form>
+                <b-checkbox>Remember me</b-checkbox>
+            </section>
+          <footer class="modal-card-foot">
+              <button class="button is-primary">Sign up</button>
+          </footer>
+    </div>
+  </form>
   <!-- <div>
     <b-notification v-if="error" type="is-danger" has-icon>
       {{ error.message }}
@@ -93,13 +93,12 @@ export default {
 
 <style scoped>
   form {
-    max-width: 400px;
     margin: auto;
   }
 .modal-card{
-  margin-top: 5rem;
-  padding: 3em;
   max-width: 30rem;
+  margin: auto;
+  margin-top: 5rem;
    background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);

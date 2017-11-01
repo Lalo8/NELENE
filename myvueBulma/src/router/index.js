@@ -12,18 +12,24 @@ import profileAdminPage from '@/router/profiles/profileAdminPage'
 import mapPage from '@/router/org/mapPage'
 import { checkUser } from '@/api/auth';
 import Buefy from 'buefy';
-import Vuetify from 'vuetify';
-import Vue2Filters from 'vue2-filters';
+import 'vue-googlemaps/dist/vue-googlemaps.css'
+import VueGoogleMaps from 'vue-googlemaps'
+import Vue2Filters from 'vue2-filters'
 
 import 'buefy/lib/buefy.css';
+Vue.use(VueGoogleMaps, {
+  load: {
+    apiKey: 'AIzaSyDuBacGwzcYTG2tpXRlcTc2d6mYk2MZF0c',
+    libraries: ['places'],
+  },
+});
 
 Vue.use(Buefy,{
   defaultIconPack:'fa'
 });
-Vue.use(Vuetify);
 Vue.use(Vue2Filters);
 
-Vue.use(Router)
+Vue.use(Router);
 
 
 const router = new Router({

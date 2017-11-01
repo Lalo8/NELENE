@@ -1,44 +1,44 @@
 <template> 
-<div>
-<ul>
-<li v-for="organisation in organisations" :key="organisation._id">
-<div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="../../assets/social.png" alt="Placeholder image">
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4">{{organisation.name}}</p>
-        <p class="subtitle is-6">{{organisation.author}}</p>
-      </div>
-    </div>
+  <div>
+    <ul>
+      <li v-for="organisation in organisations" :key="organisation._id">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="../../assets/social.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">{{organisation.name}}</p>
+                  <p class="subtitle is-6">{{organisation.author}}</p>
+                </div>
+              </div>
 
-    <div class="content">
-        <p>{{organisation.description}}</p>
-        <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
-        <br>
-      <div>
-        <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
-        <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
-        <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
-      </div>
-      <div class="card-footer">
-        <a :href="'/organisations/'+ organisation._id" class="button card-footer-item is-warning is-small">Edit</a>
-     </div>
-    </div>
+              <div class="content">
+                <p>{{organisation.description}}</p>
+                <a class="button is-primary is-outlined is-small" :href="'/'+ organisation._id">Let's know more </a>
+                <br>
+                <div>
+                  <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
+                  <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag>
+                  <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
+                </div>
+                <div class="card-footer">
+                  <a :href="'/organisations/'+ organisation._id" class="button card-footer-item is-warning is-small">Edit</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
-</div>
-</li>
-</ul>
-</div>
 </template>
 
 <script>

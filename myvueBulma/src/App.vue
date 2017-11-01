@@ -1,80 +1,75 @@
 <template>
-<div id="app">
-
-<nav class="navbar is-primary">
-  <div class="navbar-brand">
-
-    <div class="navbar-burger burger" data-target="navDropping" :class="{'is-active': active }">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <div id="navDropping" class="navbar-menu" :class="{'is-active': active }">
-    
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <router-link v-if="!$root.user" to="login" class="navbar-link">
-          Login
-        </router-link>   
-        <router-link v-if="!$root.user" to="signup" class="navbar-link">
-          Signup
-        </router-link> 
-         <b-dropdown v-model="navigation" v-if="$root.user"position="is-bottom-left">
-            <a class="navbar-item" slot="trigger">
-              <b-icon icon="address-card">
-              </b-icon> 
-              <span>My profile</span>
-            </a>
-            <b-dropdown-item custom>
-              <b-icon icon="person">
-              </b-icon>
-              Logged as <b>{{$root.user.name}}</b>
-            </b-dropdown-item>
-            <hr class="dropdown-divider">
-  
-            <b-dropdown-item value="home" v-if="$root.user.isAdmin">
-              <b-icon icon="home">
-              </b-icon>
-                <a href='/user/profile/admin'>All organisations</a>  
-            </b-dropdown-item>
-            <b-dropdown-item value="home" v-else>
-              <b-icon icon="home">
-              </b-icon>
-                <a href='/'>All organisations</a> 
-            </b-dropdown-item>
-            <b-dropdown-item value="home">
-              <b-icon icon="check">
-              </b-icon>
-                <a href='/user/profile'>My organisations</a>
-            </b-dropdown-item>
-            <b-dropdown-item value="home">
-              <b-icon icon="plus">
-              </b-icon>
-                <a href='/new'>Add an organisation</a>
-            </b-dropdown-item>
-            <b-dropdown-item value="logout">
-              <b-icon icon="sign-out">
-              </b-icon> 
-                 <a @click.prevent="logout"href="#">Logout</a> 
-            </b-dropdown-item>
-          </b-dropdown>  
-                
-       
+  <div id="app">
+      <nav class="navbar is-primary is-transparent">
+        <div class="navbar-brand">
+          <div class="navbar-burger burger" data-target="navDropping" :class="{'is-active': active }">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div id="navDropping" class="navbar-menu" :class="{'is-active': active }">
+          
+          <div class="navbar-end">
+            <div class="navbar-item">
+                <router-link v-if="!$root.user" to="login" class="navbar-link">
+                  Login
+                </router-link>   
+                <router-link v-if="!$root.user" to="signup" class="navbar-link">
+                  Signup
+                </router-link> 
+                <b-dropdown v-model="navigation" v-if="$root.user"position="is-bottom-left">
+                    <a class="navbar-item" slot="trigger">
+                      <b-icon class="profile" icon="address-card">
+                      </b-icon> 
+                      <span class="profile">My profile</span>
+                    </a>
+                    <b-dropdown-item custom>
+                      <b-icon icon="person">
+                      </b-icon>
+                      Logged as <b>{{$root.user.name}}</b>
+                    </b-dropdown-item>
+                    <hr class="dropdown-divider">
+          
+                    <b-dropdown-item value="home" v-if="$root.user.isAdmin">
+                      <b-icon icon="home">
+                      </b-icon>
+                        <a href='/user/profile/admin'>All organisations</a>  
+                    </b-dropdown-item>
+                    <b-dropdown-item value="home" v-else>
+                      <b-icon icon="home">
+                      </b-icon>
+                        <a href='/'>All organisations</a> 
+                    </b-dropdown-item>
+                    <b-dropdown-item value="home">
+                      <b-icon icon="check">
+                      </b-icon>
+                        <a href='/user/profile'>My organisations</a>
+                    </b-dropdown-item>
+                    <b-dropdown-item value="home">
+                      <b-icon icon="plus">
+                      </b-icon>
+                        <a href='/new'>Add an organisation</a>
+                    </b-dropdown-item>
+                    <b-dropdown-item value="logout">
+                      <b-icon icon="sign-out">
+                      </b-icon> 
+                        <a @click.prevent="logout"href="#">Logout</a> 
+                    </b-dropdown-item>
+                </b-dropdown>  
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="subnavbar is-primary">
+      <a href="/"><img src="./assets/logo.png" alt=""></a>
       </div>
-    </div>
+    <section>
+      <div class="container">
+        <router-view></router-view>
+      </div>
+    </section>
   </div>
-</nav>
-<div class="subnavbar is-primary">
-<a href="/"><img src="./assets/logo.png" alt=""></a>
-</div>
-
-<section>
-<div class="container">
-    <router-view></router-view>
-  </div>
-</section>
-</div>
 </template>
 
 <script>
@@ -140,9 +135,13 @@ document.addEventListener('DOMContentLoaded', function () {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 0px;
+}
+.profile {
+  color: white;
+  margin-right: 10px;
+
 }
 
 .container {

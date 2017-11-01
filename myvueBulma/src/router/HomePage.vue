@@ -2,12 +2,12 @@
   <div class="hello">
     <h1 class="title" >{{ msg }}</h1>
     <div class="homecategory">
-     <div class="cat">
-      <a href="https://nelene.herokuapp.com/"><h1>At a glance</h1></a>
-     </div>
-     <div class="cat">
-      <a href=""><h1>Customized</h1></a>
-     </div>
+      <div class="cat">
+        <a href="https://nelene.herokuapp.com/"><h1>At a glance</h1></a>
+      </div>
+      <div class="cat">
+        <a href=""><h1>Customized</h1></a>
+      </div>
     </div>
     <h2>Ecosystem</h2>
     <ul>

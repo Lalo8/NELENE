@@ -1,37 +1,27 @@
 <template>
-<div class="google-map" :id="mapName"></div>
+<googlemaps-map
+  :center.sync="center"
+  :zoom.sync="zoom"
+  :options="mapOptions"
+  @idle="onIdle"
+  @click="onMapClick">
+
+  <!-- User Position -->
+  <googlemaps-user-position
+    @update:position="setUserPosition"
+  />
+
+  <googlemaps-marker
+    v-for="marker of markers"
+    :key="marker._id"
+    :label="{
+      color: marker === currentmarker ? 'white' : 'black',
+      fontFamily: 'Material Icons',
+      fontSize: '20px',
+      text: 'star_rate',
+    }"
+    :position="marker.position"
+    @click="selectMarker(marker._id)"
+  />
+</googlemaps-map>
 </template>
-
-
-
-
-
-<script>
-
-export default {
-  name: 'google-map',
-  props: ['name'],
-  data: function () {
-    return {
-      mapName: this.name + "-map",
-    }
-  },
-  mounted: function () {
-    const element = document.getElementById(this.mapName)
-    const options = {
-      zoom: 14,
-      center: new google.maps.LatLng(51.501527,-0.1921837)
-    }
-    const map = new google.maps.Map(element, options);
-  }
-};
-</script>
-
-<style scoped>
-    .google-map {
-    width: 800px;
-  height: 600px;
-  margin: 0 auto;
-  background: gray;
-   }
-</style>

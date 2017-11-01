@@ -19,119 +19,120 @@
                                 <p class="title">
                                     {{organisation.name}}
                                 </p>
-                                <p class="subtitle">{{organisation.description}} </p>
-                                    <button class="button is-primary is-medium" @click="isCardModalActive = true"> I want to help ! 
-                                    </button>
-                                        <b-modal :active.sync="isCardModalActive" :width="640">
-                                            <div class="card">
-                                                <div class="card-content">
-                                                    <div class="content centered">
-                                                        <p class="title">GREAT ! </p>
-                                                        <p class="subtitle" style="margin-top:3px">For that, you just need to send a message to <a href="mailto:"></a>{{organisation.contact}}</p>
-                                                    </div>
-                                                </div>
+                                <p class="subtitle">{{organisation.description}} 
+                                </p>
+                                <button class="button is-primary is-medium" @click="isCardModalActive = true"> I want to help ! 
+                                </button>
+                                <b-modal :active.sync="isCardModalActive" :width="640">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="content centered">
+                                                <p class="title">GREAT ! </p>
+                                                <p class="subtitle" style="margin-top:3px">For that, you just need to send a message to <a href="mailto:"></a>{{organisation.contact}}</p>
                                             </div>
-                                        </b-modal>
+                                        </div>
+                                    </div>
+                                </b-modal>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </b-tab-item>
 
             <b-tab-item label="Team">
-          <div class="box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-      </figure>
-    </div>
-    <div class="media-content">
-      <div class="content">
-        <p class="title">
-          <strong>John Smith</strong> </p>
-          <br>
-          <p class="subtitle">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-        </p>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-facebook"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-whatsapp"></i></span>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </article>
-            <article class="media">
-                <div class="media-left">
-                <figure class="image is-64x64">
-                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                </figure>
-                </div>
-                <div class="media-content">
-                <div class="content">
-                    <p class="title">
-                    <strong>John Smith</strong> </p>
-                    <br>
-                    <p class="subtitle" >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                    </p>
-                </div>
-                <nav class="level is-mobile">
-                    <div class="level-left">
-                    <a class="level-item">
-                        <span class="icon is-small"><i class="fa fa-linkedin"></i></span>
-                    </a>
-                    <a class="level-item">
-                        <span class="icon is-small"><i class="fa fa-facebook"></i></span>
-                    </a>
-                    <a class="level-item">
-                        <span class="icon is-small"><i class="fa fa-whatsapp"></i></span>
-                    </a>
-                    </div>
-                </nav>
-                </div>
-            </article>
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-      </figure>
-    </div>
-    <div class="media-content">
-      <div class="content">
-        <p class= title>
-          <strong>John Smith</strong>
-          </p>
-          <br>
-          <p class="subtitle">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-        </p>
-      </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-facebook"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-whatsapp"></i></span>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </article>
-</div>    
+                <div class="box">
+                    <article class="media">
+                        <div class="media-left">
+                        <figure class="image is-64x64">
+                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                        </figure>
+                        </div>
+                        <div class="media-content">
+                        <div class="content">
+                            <p class="title">
+                            <strong>John Smith</strong> </p>
+                            <br>
+                            <p class="subtitle">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                            </p>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                            </a>
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fa fa-facebook"></i></span>
+                            </a>
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fa fa-whatsapp"></i></span>
+                            </a>
+                            </div>
+                        </nav>
+                        </div>
+                    </article>
+                    <article class="media">
+                        <div class="media-left">
+                        <figure class="image is-64x64">
+                            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                        </figure>
+                        </div>
+                        <div class="media-content">
+                        <div class="content">
+                            <p class="title">
+                            <strong>John Smith</strong> </p>
+                            <br>
+                            <p class="subtitle" >
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                            </p>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fa fa-linkedin"></i></span>
+                            </a>
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fa fa-facebook"></i></span>
+                            </a>
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fa fa-whatsapp"></i></span>
+                            </a>
+                            </div>
+                        </nav>
+                        </div>
+                    </article>
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image is-64x64">
+                                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p class= title>
+                                    <strong>John Smith</strong>
+                                </p>
+                                <br>
+                                <p class="subtitle">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                                </p>
+                            </div>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                                    </a>
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-facebook"></i></span>
+                                    </a>
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-whatsapp"></i></span>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </article>
+                </div>    
             </b-tab-item>
 
             <b-tab-item label="Current Needs">
@@ -140,14 +141,12 @@
                         <div class="need" v-for="need in organisation.needs" :key="need">
                             <figure class="image is-150x150" v-if="need === 'recruitment'" >
                                 <img src="../../assets/rn.png">
-
                             </figure>
-
                             <figure class="image is-150x150" v-if="need === 'location'">
-                            <img src="../../assets/ln.png">
+                                <img src="../../assets/ln.png">
                             </figure>
                             <figure class="image is-150x150" v-if="need === 'seed funding'">
-                            <img src="../../assets/sn.png">
+                                <img src="../../assets/sn.png">
                             </figure>
                             <b-tag class="subtitle" rounded type="is-warning is-medium">
                                 {{need}}

@@ -1,30 +1,26 @@
 <template>
-<div class="container">
-<section>
-
-<form @submit.prevent="editOrganisation">
-<b-field label="Profile Picture"></b-field>
-<div class="field">
-  <div class="file is-warning is-boxed is-centered">
-    <label class="file-label">
-      <input class="file-input" type="file" name="resume">
-      <span class="file-cta">
-        <span class="file-icon">
-          <i class="fa fa-cloud-upload"></i>
-        </span>
-        <span class="file-label">
-          Upload your file 
-        </span>
-      </span>
-    </label>
-  </div>
-</div>
-</b-field>
-<progress class="progress is-primary" value="15" max="100">30%</progress>
-
+  <div class="container">
+    <section>
+      <form @submit.prevent="editOrganisation">
+        <b-field label="Profile Picture">
+        </b-field>
+          <div class="field">
+            <div class="file is-warning is-boxed is-centered">
+              <label class="file-label">
+                <input class="file-input" type="file" name="resume">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fa fa-cloud-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Upload your file 
+                  </span>
+                </span>
+              </label>
+            </div>
+          </div>
         <b-field label="Name">
-            <b-input v-model="organisation.name" value="organisation.name"></b-input>
-            
+            <b-input v-model="organisation.name" value="organisation.name"></b-input>  
         </b-field>
         <b-field label="Description">
             <b-input v-model="organisation.description" type="textarea">
@@ -37,7 +33,7 @@
             </b-input>
         </b-field>
         <b-field grouped>
-         <b-field label=" Address">
+          <b-field label=" Address">
             <b-input v-model="organisation.address" >
             </b-input>
           </b-field>
@@ -52,27 +48,24 @@
             </b-input>
           </b-field>
         </b-field>
-    
         <b-field label=" Category">
-            <b-select placeholder="organisation.category" icon="person" v-model="organisation.category">
+          <b-select placeholder="organisation.category" icon="person" v-model="organisation.category">
             <option value="startup">Start-Up</option>
             <option value="incubator">Incubator</option>
             <option value="investment">Investment Fund</option>
-            </b-select>
+          </b-select>
         </b-field>
         <b-field label="Type of needs">
-            <b-select multiple native-size="3" v-model="organisation.needs" placeholder="organisation.category">
-                <option value="recruitment">recruitment</option>
-                <option value="location">location</option>
-                <option value="seed funding">seed funding</option>
-                
-            </b-select>
+          <b-select multiple native-size="3" v-model="organisation.needs" placeholder="organisation.category">
+              <option value="recruitment">recruitment</option>
+              <option value="location">location</option>
+              <option value="seed funding">seed funding</option>     
+          </b-select>
         </b-field>
         <button class="button is-primary">Submit information</button>
-         </form>
+      </form>
     </section>
-    </div>
-   
+  </div> 
 </template>
 
 <script>
