@@ -80,6 +80,7 @@
         <router-view>
         </router-view> 
       </div>
+    <div class="mainfooter"></div>
        <!-- <aside class="menu" v-if="$root.user">
                   <p class="menu-label">
                     General
@@ -232,5 +233,11 @@ document.addEventListener('DOMContentLoaded', function () {
     margin-top: -0.375em;
     right: 1.125em;
     top: 50%;
+}
+
+.mainfooter{
+  max-height: 70px;
+  background-color: #795CD2;
+
 }
 </style>

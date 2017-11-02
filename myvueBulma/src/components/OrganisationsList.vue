@@ -40,9 +40,10 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  background-color:#F4F4F4;
 }
 .small{
-max-height: 700px;
+max-height: 800px;
 padding:5px 10px 5px 10px;
     overflow: auto;
     /* position: absolute; */
@@ -50,5 +51,6 @@ padding:5px 10px 5px 10px;
     left: 0;
     right: 0;
     bottom: 0;
+    max-width: 330px;
 } 
 </style>

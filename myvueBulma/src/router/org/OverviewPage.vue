@@ -1,12 +1,14 @@
 <template>
   <div>
-    <filter-bar :organisations="organisations"></filter-bar>
-    <div class="split">
-      <organisations-list :organisations="filterBy(organisations,search)">
-        <organisation-card></organisation-card>
-      </organisations-list>
-      <map-org :organisations="organisations"></map-org>
-    </div>
+    <div class="overviewcontainer">
+        <organisations-list :organisations="filterBy(organisations,search)">
+          <organisation-card></organisation-card>
+        </organisations-list>
+        <div class="split">
+          <filter-bar :organisations="organisations"></filter-bar>
+          <map-org :organisations="organisations"></map-org>
+        </div>
+      </div>
   </div>  
 </template>
 
@@ -46,13 +48,19 @@ export default {
 <style scoped>
 
 .searchbar{
-margin: 30px auto;
+margin-bottom: 20px;
+margin-left: 26rem;
 max-width: 700px;
 }
 .split{
   display:flex;
-  height : 700px;
+  flex-direction: column;
+  height : 100%;
   padding: 10px;
       
+}
+.overviewcontainer{
+  display: flex;
+  flex-direction: row;
 }
 </style>

@@ -44,6 +44,6 @@ props: {
 }
 .small {
   height: 660px;
-  width: 300rem;
+  width : 65rem;
 }
 </style>
