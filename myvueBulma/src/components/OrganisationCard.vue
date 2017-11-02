@@ -103,10 +103,10 @@ li{
 
 .small{
     max-width: 18rem;
-    max-height: 25rem;
+    max-height: 28rem;
 }
 .smallimg {
-    padding-top: 61.6666%;
+    padding-top: 60%;
 }
 /* .smallcontent{
     height: 300px

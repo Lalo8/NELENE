@@ -51,6 +51,8 @@ max-width: 700px;
 }
 .split{
   display:flex;
+  height : 700px;
+  padding: 10px;
       
 }
 </style>

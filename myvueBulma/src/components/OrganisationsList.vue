@@ -41,9 +41,14 @@ ul {
   margin: 0;
   padding: 0;
 }
-/* .small{
-max-width: 900px;
-padding:20px;
-} */
-
+.small{
+max-height: 700px;
+padding:5px 10px 5px 10px;
+    overflow: auto;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+} 
 </style>
