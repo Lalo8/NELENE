@@ -1,8 +1,13 @@
 <template>
     <div class="container">
-        <h1 class= "title">Let's create a new organisation !</h1>
-        <p>In order for the organisation page to be useful, please enter as many details as possible  </p>
-        <section>
+        <div class="header">
+            <h1 class= "title">Let's create a new organisation !</h1>
+             <div class="trait"></div>
+            <p>In order for the organisation page to be useful, please enter as many details as possible  </p>
+        </div>
+       
+        <div class="card">
+            <section>
                 <form @submit.prevent="addNewOrganisation">
                     <b-field label="Profile Picture">
                     </b-field>
@@ -63,10 +68,10 @@
                             <option value="social business">social business</option>
                         </b-select>
                     </b-field>
-                    <button class="button is-primary">Submit information</button>
+                    <button class="button is-primary" >Submit information</button>
                 </form>
-           
-        </section>
+            </section>
+        </div>
     </div> 
 </template>
 <script>
@@ -115,13 +120,52 @@ export default {
 </script>
 
 <style scoped >
+.trait
+{
+background-color:rgb(121,92,210);
+height: 4pt;
+width: 30%;
+margin-left: 27rem;
+margin-top: -8px;
+}
+.title{
+margin : 0px;
+}
+.header{
+    text-align: center;
+    margin-top: 5rem;
+   ;
+}
+
+.header p {
+    margin-top: 15px;
+}
 .container{
-    max-width: 900px;
-    margin: auto;
+    padding: 20px;
+    margin-bottom: 50px;
 }
 .form {
-margin: auto;
-padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+.card{
+  padding: 50px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    max-width: 60rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    -webkit-box-shadow: 0 20px 40px -14px rgba(121,92,210,0.9);
+    box-shadow: 0 20px 40px -14px rgba(121,92,210,1);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: auto;
+    overflow: hidden;
 }
 
 </style>
