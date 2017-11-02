@@ -1,11 +1,11 @@
 <template>
-    <li>
-        <div class="card">
-            <div class="card-image">
-                <figure class="image is-3by2" v-if="organisation.type === 'social business'">
+    <li >
+        <div class="card" :class="{small :small}">
+            <div class="card-image" >
+                <figure class="image is-3by2" :class="{smallimg :smallimg}" v-if="organisation.type === 'social business'">
                     <img src="../assets/social.png" alt="Placeholder image">
                 </figure>
-                <figure class="image is-3by2" v-if="organisation.type === 'tech'">
+                <figure class="image is-3by2" :class="{smallimg :smallimg}"  v-if="organisation.type === 'tech'">
                     <img src="../assets/tech2.png" alt="Placeholder image">
                 </figure>
             </div>
@@ -16,19 +16,25 @@
                     <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                     </figure>
                 </div>
-                <div class="media-content">
+                <div class="media-content" :class="{smallcontent :smallcontent}">
                     <p class="title is-5">{{organisation.name}}</p>
                     <p class="subtitle is-7">{{organisation.author}}</p>
                 </div>
                 </div>
-                <div class="content">
+                <div class="content" :class="{smallcontent :smallcontent}">
                     <p>{{organisation.description}}</p>
                     <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view/'+ organisation._id">
                         Let's know more
                     </router-link>
                     <br>
                     <br>
-                    <div>
+                    <div v-if="small">
+                        <b-tag rounded type="is-danger is-small">{{organisation.category}}</b-tag>
+                        <b-tag rounded type="is-warning is-small">{{organisation.type}}</b-tag>
+                        <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
+                        <b-tag rounded type="is-info is-small">{{organisation.country}}</b-tag>
+                    </div>
+                    <div v-else>
                         <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
                         <b-tag rounded type="is-warning is-medium">{{organisation.type}}</b-tag>
                         <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
@@ -48,7 +54,19 @@
 export default {
   props: {
     organisation: Object,
-    editable: Boolean
+    editable: Boolean,
+    small: {
+      type: Boolean,
+      default: true,
+    },
+    smallimg: {
+      type: Boolean,
+      default: true,
+    },
+    smallcontent: {
+      type: Boolean,
+      default: true,
+    }
   }
 };
 </script>
@@ -83,5 +101,23 @@ li{
   }
 }
 
+.small{
+    max-width: 18rem;
+    max-height: 25rem;
+}
+.smallimg {
+    padding-top: 61.6666%;
+}
+/* .smallcontent{
+    height: 300px
 
+} */
+
+.smallcontent p.title{
+font-size: 15px;
+
+}
+.smallcontent p{
+font-size: 13px;
+} 
 </style>

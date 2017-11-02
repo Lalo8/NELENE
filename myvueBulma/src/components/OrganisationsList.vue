@@ -1,5 +1,7 @@
 <template>
-<ul>
+<ul :class="{
+        small: small
+      }">
     <organisation-card
         v-for="organisation in organisations"
         :key="organisation._id"
@@ -21,12 +23,16 @@ export default {
         editable: {
             type: Boolean,
             default: false
-        }
+        },
+    small: {
+        type: Boolean,
+        default: true
     }
+    },
 }
 </script>
 
-<style>
+<style scoped>
 
 ul {
   display: flex;
@@ -35,4 +41,9 @@ ul {
   margin: 0;
   padding: 0;
 }
+/* .small{
+max-width: 900px;
+padding:20px;
+} */
+
 </style>

@@ -9,7 +9,7 @@ import ProfileOrganisationPage from '@/router/org/ProfileOrganisationPage'
 import ProfileUserPage from '@/router/profiles/ProfileUserPage'
 import EditOrganisationPage from '@/router/org/EditOrganisationPage'
 import AdminPage from '@/router/profiles/AdminPage'
-import MapPage from '@/router/org/MapPage'
+import OverviewPage from '@/router/org/OverviewPage'
 import { checkUser } from '@/api/auth';
 
 Vue.use(Router);
@@ -100,7 +100,7 @@ const router = new Router({
     },
     {
       path: '/overview',
-      component: MapPage,
+      component: OverviewPage,
       meta: {
         // the meta object can contain any information
         // about the route that you may want to use
