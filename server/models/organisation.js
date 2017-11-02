@@ -58,6 +58,7 @@ const organizationSchema = new Schema({
 			required: true,
 			ref: 'User',
 		},
+	location: { type: { type: String }, coordinates: [Number] }
 });
 
 module.exports = mongoose.model('Organisation', organizationSchema);
