@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card{
   max-width: 23rem;
    background-color: white;

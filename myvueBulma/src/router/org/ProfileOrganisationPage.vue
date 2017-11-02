@@ -2,8 +2,9 @@
 <template>
     <section v-if="organisation">
     <div class="banner">
-    </div>  
-        <b-tabs position="is-centered" class="block"v-model="activeTab">
+        {{organisation.name}}
+    </div>
+        <b-tabs position="is-centered" class="block" v-model="activeTab">
             <b-tab-item label="Description">
                <div class="card">
                     <div class="card-content">
@@ -180,11 +181,32 @@ export default {
 <style scoped>
 .banner {
   width: 100%;
-  height: 400px;
+  height: 300px;
+  margin-top:0px;
   background-color: #cccccc;
+  background-image: url("../../assets/dakar2.jpg");
+  text-align: center;
+  padding-top: 13%;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
 }
 .subtitle {
-  font-size: 20px;
+  font-size: 18px;
+}
+.card {
+    margin-top: 20px;
+   background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  &:hover {
+    .card__image {
+      filter: contrast(100%);
+    }
+  }
 }
 .card-content {
   display: flex;
@@ -197,11 +219,10 @@ p {
 }
 .title {
   margin-top: 5px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
-.card,
-article {
+.card,article {
   width: 80%;
   margin: 30px auto;
   border: none;

@@ -68,7 +68,9 @@
                             <option value="social business">social business</option>
                         </b-select>
                     </b-field>
+                    <b-field>
                     <button class="button is-primary" >Submit information</button>
+                    </b-field>
                 </form>
             </section>
         </div>
@@ -125,8 +127,8 @@ export default {
 background-color:rgb(121,92,210);
 height: 4pt;
 width: 30%;
-margin-left: 27rem;
-margin-top: -8px;
+margin-left: 32rem;
+margin-top: -5px;
 }
 .title{
 margin : 0px;

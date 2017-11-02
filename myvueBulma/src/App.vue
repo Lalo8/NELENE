@@ -24,7 +24,7 @@
                  <router-link v-if="$root.user" to="/" class="navbar-link">
                  All organisations
                 </router-link> 
-                 <router-link v-if="$root.user" to="/profile" class="navbar-link">
+                 <router-link v-if="$root.user" to="/user/profile" class="navbar-link">
                  My organisations
                 </router-link> 
                  <router-link v-if="$root.user" to="/organisations/add" class="navbar-link">
