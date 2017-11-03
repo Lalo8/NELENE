@@ -76,7 +76,7 @@
         </div>
       </nav>
     <section>
-      <div class="container" :class="{smallcontainer :smallcontainer}">
+      <div class="container" :class="{smallcontainer: $route.path === '/overview' }">
         <router-view>
         </router-view> 
       </div>
@@ -135,12 +135,6 @@ export default {
       organisations:[],
       isAdmin:false,
       navigation: null
-    }
-  },
-  props: {
-    smallcontainer: {
-      type: Boolean,
-      default: true
     }
   },
   created () {
@@ -260,5 +254,9 @@ padding-top : 20px;
 color : white;
 
 
+}
+
+body{
+  margin: 0px;
 }
 </style>

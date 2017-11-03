@@ -1,6 +1,6 @@
 <template>
     <li >
-        <div class="card" :class="{small :small}">
+        <div class="card" :class="{smallcard :smallcard}">
             <div class="card-image" >
                 <figure class="image is-3by2" :class="{smallimg :smallimg}" v-if="organisation.type === 'social business'">
                     <img src="../assets/social.png" alt="Placeholder image">
@@ -28,7 +28,7 @@
                     </router-link>
                     <br>
                     <br>
-                    <div v-if="small">
+                    <div v-if="smallcard">
                         <b-tag rounded type="is-danger is-small">{{organisation.category}}</b-tag>
                         <b-tag rounded type="is-warning is-small">{{organisation.type}}</b-tag>
                         <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
@@ -55,7 +55,7 @@ export default {
   props: {
     organisation: Object,
     editable: Boolean,
-    small: {
+    smallcard: {
       type: Boolean,
       default: true,
     },
@@ -101,7 +101,7 @@ li{
   }
 }
 
-.small{
+.smallcard{
     max-width: 18rem;
     max-height: 28rem;
 }

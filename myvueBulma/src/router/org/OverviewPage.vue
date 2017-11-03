@@ -1,19 +1,21 @@
 <template>
-  <div class= "splitex">
-    <div class="filter">
-      <filter-bar :organisations="organisations" @filter="filteredOrganisations = $event">
-      </filter-bar>
-    </div>
-    <div class="left">
-      <div class="result">
-         <h1> <span> {{filteredOrganisations.length}}</span> results </H1>
+  <div smallcontainer>
+    <div class= "splitex">
+      <div class="filter">
+        <filter-bar :organisations="organisations" @filter="filteredOrganisations = $event">
+        </filter-bar>
       </div>
-      <organisations-list :organisations="filteredOrganisations">
-        <organisation-card></organisation-card>
-      </organisations-list>
-    </div>
-    <div class="right">
-      <map-org :organisations="filteredOrganisations"></map-org>
+      <div class="left">
+        <div class="result">
+          <h1> <span> {{filteredOrganisations.length}}</span> results </H1>
+        </div>
+        <organisations-list :organisations="filteredOrganisations" small >
+          <organisation-card  smallimg smallcontent ></organisation-card>
+        </organisations-list>
+      </div>
+      <div class="right">
+        <map-org :organisations="filteredOrganisations" small></map-org>
+      </div>
     </div>
   </div>
 </template>
@@ -58,7 +60,7 @@ export default {
 display: flex;
 flex-direction: row;
 background-color: black;
-height: 700px;
+height: 100%;
 width: 1458px;
 
 }
@@ -75,9 +77,9 @@ width: 1458px;
   
 }
 .left{
-width: 450px;
-height: 100%;
-background-color: white;
+  width: 450px;
+  height: 100%;
+  background-color: white;
 }
 .right{
   height: 100%;
@@ -105,7 +107,6 @@ max-width: 600px;
 }
 .result{
 text-align:center;
-  margin-right: 10px;
   font-size: 35px;
   font-weight: bold;
   background-color:#FBF4FF;

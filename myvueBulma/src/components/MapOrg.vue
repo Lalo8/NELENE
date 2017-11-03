@@ -24,7 +24,7 @@ props: {
     organisations: Array,
     small: {
       type: Boolean,
-      default: true,
+      default: false,
     }
   },
   data () {
