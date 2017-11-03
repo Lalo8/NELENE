@@ -76,11 +76,13 @@
         </div>
       </nav>
     <section>
-      <div class="container">
+      <div class="container" :class="{smallcontainer :smallcontainer}">
         <router-view>
         </router-view> 
       </div>
-    <div class="mainfooter"></div>
+    <div class="mainfooter">
+      Made with <i class="em em-smile"></i> by Elodie WANANG // Ironhack Final Project 
+    </div>
        <!-- <aside class="menu" v-if="$root.user">
                   <p class="menu-label">
                     General
@@ -133,6 +135,12 @@ export default {
       organisations:[],
       isAdmin:false,
       navigation: null
+    }
+  },
+  props: {
+    smallcontainer: {
+      type: Boolean,
+      default: false
     }
   },
   created () {
@@ -200,7 +208,9 @@ document.addEventListener('DOMContentLoaded', function () {
 .container {
   margin-top:50px;
 }
-
+.smallcontainer{
+margin: 0px;
+}
 
 .subnavbar{
   height:200px;
@@ -236,8 +246,12 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 .mainfooter{
-  max-height: 70px;
-  background-color: #795CD2;
+height: 70px;
+background-color: #795CD2;
+text-align : center;
+padding-top : 20px;
+color : white;
+
 
 }
 </style>

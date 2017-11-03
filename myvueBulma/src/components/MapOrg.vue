@@ -20,7 +20,7 @@ props: {
     organisations: Array,
     small: {
       type: Boolean,
-      default: true,
+      default: false,
     }
   },
   data () {
@@ -43,7 +43,7 @@ props: {
   width: 100%;
 }
 .small {
-  height: 660px;
-  width : 65rem;
+  height: 860px;
+  width : 60rem;
 }
 </style>

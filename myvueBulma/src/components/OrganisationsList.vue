@@ -26,7 +26,7 @@ export default {
         },
     small: {
         type: Boolean,
-        default: true
+        default: false,
     }
     },
 }
@@ -40,11 +40,11 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color:#F4F4F4;
+ 
 }
 .small{
 max-height: 800px;
-padding:5px 10px 5px 10px;
+padding:5rem 10px 5px 10px;
     overflow: auto;
     /* position: absolute; */
     top: 0;
@@ -52,5 +52,7 @@ padding:5px 10px 5px 10px;
     right: 0;
     bottom: 0;
     max-width: 330px;
+    margin-bottom: 2px;
+     background-color:#F4F4F4;
 } 
 </style>
