@@ -95,7 +95,7 @@ const startups = [new Organisation({
 
 User.register(admin, 'africa', (err, admin) => {
 	if (err) return console.error(err)
-    incubatoqrs.forEach(incubator => incubator.ownerId = admin._id)
+    incubators.forEach(incubator => incubator.ownerId = admin._id)
     startups.forEach(startup => startup.ownerId = admin._id)
 
 	return Promise.all([
