@@ -1,18 +1,19 @@
 <template>
   <div class= "splitex">
+    <div class="filter">
+      <filter-bar :organisations="organisations" @filter="filteredOrganisations = $event">
+      </filter-bar>
+    </div>
     <div class="left">
       <div class="result">
         <h1> X results </H1>
       </div>
-      <organisations-list :organisations="filterBy(organisations,search)">
+      <organisations-list :organisations="filteredOrganisations">
         <organisation-card></organisation-card>
       </organisations-list>
     </div>
     <div class="right">
-      <div class="filter">
-        <filter-bar :organisations="organisations"></filter-bar>
-      </div>
-      <map-org :organisations="organisations"></map-org>
+      <map-org :organisations="filteredOrganisations"></map-org>
     </div>
   </div>
 </template>
@@ -39,12 +40,14 @@ export default {
       searched:'',
 			userPosition: null,
       zoom: 4,
-      organisations:[]
+      organisations:[],
+      filteredOrganisations: []
 		}
   },
   created() {
     getOrganisations().then(organisations => {
-      this.organisations = organisations
+      this.organisations = organisations,
+      this.filteredOrganisations = organisations
     })
   }
 }

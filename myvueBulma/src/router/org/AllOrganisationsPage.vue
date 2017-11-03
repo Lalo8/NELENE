@@ -1,17 +1,11 @@
 <template> 
-<div>
-  <div class="searchbar">
-      <b-field type="is-primary" position="is-centered">
-        <b-input v-model="searched" type="search" icon="search" placeholder="Search a country, a city, a type of organisation..." expanded>
-        </b-input>
-        <p class="control">
-          <button class="button is-primary">Filter</button>
-        </p>
-      </b-field>
+  <div>
+    <div class="searchbar">
+       <filter-bar :organisations="organisations" @filter="filteredOrganisations = $event"></filter-bar>
     </div>
 
     <!-- <filter-bar :organisations="organisations"></filter-bar> -->
-    <organisations-list :organisations="filterBy(organisations,searched)">
+    <organisations-list :organisations="filteredOrganisations">
       <organisation-card></organisation-card>
     </organisations-list>
     <footer>
@@ -19,37 +13,34 @@
       <router-link to="/organisations/add" class="button is-primary is-outlined is-large is-focused" v-if="$root.user">I want to add an organisation !</router-link>
     </footer>
   </div>
-  </div>
 </template>
 
 <script>
 import {getOrganisations} from '@/api/organisations'
 import OrganisationsList from '@/components/OrganisationsList'
+import FilterBar from '@/components/FilterBar'
 export default {
   components: {
     OrganisationsList,
-
+    FilterBar,
+  },
+  props: {
+    searched: '',
   },
   data() {
     return {
       organisations: [],
+      filteredOrganisations: [],
       errors: [],
-      selected: null,
-      searched: '',
-      name:''
-
+      selected: null, 
     }
   },
-  computed: {
-    filteredOrganisations() {
-      return this.organisations.filter(option => {
-        return option.organisation.name.toLowerCase().includes(this.search.toLowerCase())
-      })
-    }
+  methods: {
   },
   created() {
     getOrganisations().then(organisations => {
       this.organisations = organisations
+      this.filteredOrganisations = organisations
     })
   }
 }

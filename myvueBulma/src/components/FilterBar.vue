@@ -4,7 +4,7 @@
         <b-input v-model="searched" type="search" icon="search" placeholder="Search a country, a city, a type of organisation..." expanded>
         </b-input>
         <p class="control">
-          <button @click="filter"class="button is-primary">Filter</button>
+          <button @click="filter" class="button is-primary">Filter</button>
         </p>
       </b-field>
     </div>
@@ -21,7 +21,9 @@ export default {
         }
     },
     methods: {
-
+        filter() {
+            this.$emit('filter', this.filterBy(this.organisations, this.searched))
+        }
     }
 }
 </script>

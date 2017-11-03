@@ -1,39 +1,44 @@
 <template>
-  <form @submit.prevent="signup">
-    <div class="modal-card" style="width:500px">
-            <section class="modal-card-body">
-                <b-field label="Email">
-                    <b-input v-model="email" 
-                        type="email"
-                        placeholder="Your email"
-                        required>
-                    </b-input>
-                </b-field> 
-                <b-field label="Name">
-                    <b-input v-model="name" 
-                        type="name"
-                        placeholder="Your name"
-                        required>
-                    </b-input>
-                </b-field>
+  <div>
+    <b-notification class="errormsg"type="is-danger" has-icon v-if='error'>
+        {{error}}
+    </b-notification>
 
-                <b-field label="Password">
-                    <b-input
-                    v-model="password"
-                        type="password"
-                        password-reveal
-                        placeholder="Your password"
-                        required>
-                    </b-input>
-                </b-field>
+    <form @submit.prevent="signup">
+      <div class="modal-card" style="width:500px">
+              <section class="modal-card-body">
+                  <b-field label="Email">
+                      <b-input v-model="email" 
+                          type="email"
+                          placeholder="Your email"
+                          required>
+                      </b-input>
+                  </b-field> 
+                  <b-field label="Name">
+                      <b-input v-model="name" 
+                          type="name"
+                          placeholder="Your name"
+                          required>
+                      </b-input>
+                  </b-field>
 
-                <b-checkbox>Remember me</b-checkbox>
-            </section>
-          <footer class="modal-card-foot">
-              <button class="button is-primary">Sign up</button>
-          </footer>
-    </div>
-  </form>
+                  <b-field label="Password">
+                      <b-input
+                      v-model="password"
+                          type="password"
+                          password-reveal
+                          placeholder="Your password"
+                          required>
+                      </b-input>
+                  </b-field>
+
+                  <b-checkbox>Remember me</b-checkbox>
+              </section>
+            <footer class="modal-card-foot">
+                <button class="button is-primary">Sign up</button>
+            </footer>
+      </div>
+    </form>
   <!-- <div>
     <b-notification v-if="error" type="is-danger" has-icon>
       {{ error.message }}
@@ -59,6 +64,7 @@
         <button class="button is-primary">Signup</button>
       </form>
   </div> -->
+  </div>
 </template>
 
 <script>
@@ -81,9 +87,9 @@ export default {
         name: this.name,
         password: this.password
       }).then(() => {
-        this.$router.push('/')
+        this.$router.push('/login')
       }).catch(err => {
-        this.error = err.response.data.error
+        this.error = 'Error happened during sign-up'
         console.error('Signup err', err)
       })
     }
@@ -92,6 +98,11 @@ export default {
 </script>
 
 <style scoped>
+.errormsg {
+  width: 400px;
+  margin: auto;
+  margin-top: 40px;
+}
   form {
     margin: auto;
   }

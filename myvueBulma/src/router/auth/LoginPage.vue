@@ -1,5 +1,8 @@
 <template>
   <div>
+    <b-notification class="errormsg"type="is-danger" has-icon v-if='error'>
+      {{error}}
+    </b-notification>
     <form @submit.prevent="login">
       <div class="modal-card">
         <section class="modal-card-body">
@@ -41,16 +44,27 @@ export default {
   },
  methods: {
     login () {
+      this.error = null
       login(this.email, this.password, this.$root).then(data => {
-        this.$router.push('/')
+        if (data)this.$router.push('/')
+        else {
+          this.error = 'Seems like you entered a wrong username/password. Try again.'
+        }
+      }).catch( err => {
+        this.error = 'Error happened during Log-in'
+        console.error('Login error ', err)
       })
-    },
-  },
-
+  }
+}
 }
 </script>
 
 <style scoped>
+.errormsg {
+  width: 400px;
+  margin: auto;
+  margin-top: 40px;
+}
 
 .modal-card{
   max-width: 30rem;
