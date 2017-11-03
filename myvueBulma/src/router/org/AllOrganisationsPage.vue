@@ -36,6 +36,9 @@ export default {
     }
   },
   methods: {
+    filter() {
+      this.$emit('filter', this.filterBy(this.organisations, this.searched))
+    }
   },
   created() {
     getOrganisations().then(organisations => {

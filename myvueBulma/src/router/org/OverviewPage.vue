@@ -6,7 +6,7 @@
     </div>
     <div class="left">
       <div class="result">
-        <h1> X results </H1>
+         <h1> <span> {{filteredOrganisations.length}}</span> results </H1>
       </div>
       <organisations-list :organisations="filteredOrganisations">
         <organisation-card></organisation-card>
@@ -41,7 +41,7 @@ export default {
 			userPosition: null,
       zoom: 4,
       organisations:[],
-      filteredOrganisations: []
+      filteredOrganisations:[]
 		}
   },
   created() {
@@ -49,7 +49,7 @@ export default {
       this.organisations = organisations,
       this.filteredOrganisations = organisations
     })
-  }
+  },
 }
 </script>
 
@@ -104,7 +104,8 @@ max-width: 600px;
   flex-direction: row;
 }
 .result{
-  text-align: center;
+text-align:center;
+  margin-right: 10px;
   font-size: 35px;
   font-weight: bold;
   background-color:#FBF4FF;
@@ -112,5 +113,9 @@ max-width: 600px;
   padding-bottom: 3rem;
   color: #795CD2;
    
+}
+.result span {
+  font-weight: bold;
+  font-size: 50px;
 }
 </style>

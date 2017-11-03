@@ -17,13 +17,13 @@ export default {
     },
     data() {
         return {
-            searched: ""
+            searched: "",
         }
     },
     methods: {
         filter() {
-            this.$emit('filter', this.filterBy(this.organisations, this.searched))
-        }
+        this.$emit('filter', this.filterBy(this.organisations, this.searched))
+     }
     }
 }
 </script>
