@@ -1,10 +1,152 @@
 
 <template>
     <section v-if="organisation">
-    <div class="banner">
-        {{organisation.name}}
-    </div>
-        <b-tabs position="is-centered" class="block" v-model="activeTab">
+        <div class="banner">
+            {{organisation.name}}
+        </div>
+        <div class="card">
+                <p class="title">Activity</p> 
+                <div class="trait"></div>
+                <p class="subtitle">{{organisation.description}}</p>
+                <br>
+                <p class="title">Needs</p> 
+                <div class="trait"></div>
+                <div class="card-content centered">
+                    <div class="need" v-for="need in organisation.needs" :key="need">
+                        <figure class="image is-150x150" v-if="need === 'recruitment'" >
+                            <img src="../../assets/rn.png">
+                        </figure>
+                        <figure class="image is-150x150" v-if="need === 'location'">
+                            <img src="../../assets/ln.png">
+                        </figure>
+                        <figure class="image is-150x150" v-if="need === 'seed funding'">
+                            <img src="../../assets/sn.png">
+                        </figure>
+                        <b-tag class="subtitle" rounded type="is-warning is-medium">
+                            {{need}}
+                        </b-tag>
+                    </div>
+                </div>
+                    <br>
+                    <button class="button is-primary is-medium" position:="is-centered"@click="isCardModalActive = true"> I want to help ! 
+                    </button>
+                    <b-modal :active.sync="isCardModalActive" :width="640">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="content centered">
+                                    <p class="title">GREAT ! </p>
+                                    <p class="subtitle" style="margin-top:3px">For that, you just need to send a message to <a href="mailto:"></a>{{organisation.contact}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </b-modal>
+        </div>
+    </section>
+</template>
+
+<script>
+import { getOrganisation } from "@/api/organisations";
+export default {
+  data() {
+    return {
+      activeTab: 0,
+      isCardModalActive: false,
+      organisation: null
+    };
+  },
+  created() {
+    getOrganisation(this.$route.params.id).then(organisation => {
+      this.organisation = organisation;
+    });
+  }
+};
+</script>
+
+<style scoped>
+.trait
+{
+background-color:rgb(121,92,210);
+height: 4pt;
+width: 54px;
+margin-top: -27px;
+margin-left: 3rem;
+}
+.banner {
+  width: 100%;
+  height: 300px;
+  margin-top:0px;
+  background-color: #cccccc;
+  background-image: url("../../assets/dakar2.jpg");
+  text-align: center;
+  padding-top: 13%;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+.button {
+    width: 200px;
+    margin: auto;
+}
+.subtitle {
+  font-size: 18px;
+}
+ .card{
+  padding: 50px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    max-width: 60rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    -webkit-box-shadow: 0 20px 40px -14px rgba(121,92,210,0.9);
+    box-shadow: 0 20px 40px -14px rgba(121,92,210,1);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin: auto;
+    overflow: hidden;
+}
+.card-content {
+  display: flex;
+  padding: 50px 30px;
+}
+p {
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+.title {
+  margin-top: 5px;
+  font-size: 25px;
+}
+.subtitle {
+    margin-top: 20px;
+
+}
+
+.card,article {
+  width: 80%;
+  margin: 30px auto;
+  border: none;
+}
+.centered {
+  margin: auto;
+}
+.need {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 150px;
+}
+
+span.tag.subtitle.is-warning.is-medium.is-rounded {
+  margin: 10px;
+}
+</style>
+
+ <!-- <b-tabs position="is-centered" class="block" v-model="activeTab">
             <b-tab-item label="Description">
                <div class="card">
                     <div class="card-content">
@@ -156,88 +298,4 @@
                     </div>
                 </div>
             </b-tab-item>
-        </b-tabs>
-    </section>
-</template>
-
-<script>
-import { getOrganisation } from "@/api/organisations";
-export default {
-  data() {
-    return {
-      activeTab: 0,
-      isCardModalActive: false,
-      organisation: null
-    };
-  },
-  created() {
-    getOrganisation(this.$route.params.id).then(organisation => {
-      this.organisation = organisation;
-    });
-  }
-};
-</script>
-
-<style scoped>
-.banner {
-  width: 100%;
-  height: 300px;
-  margin-top:0px;
-  background-color: #cccccc;
-  background-image: url("../../assets/dakar2.jpg");
-  text-align: center;
-  padding-top: 13%;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-}
-.subtitle {
-  font-size: 18px;
-}
-.card {
-    margin-top: 20px;
-   background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  &:hover {
-    .card__image {
-      filter: contrast(100%);
-    }
-  }
-}
-.card-content {
-  display: flex;
-  padding: 50px 30px;
-  justify-content: center;
-}
-p {
-  margin-left: 10px;
-  margin-bottom: 0px;
-}
-.title {
-  margin-top: 5px;
-  font-size: 25px;
-}
-
-.card,article {
-  width: 80%;
-  margin: 30px auto;
-  border: none;
-}
-.centered {
-  text-align: center;
-}
-.need {
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-  width: 200px;
-}
-
-span.tag.subtitle.is-warning.is-medium.is-rounded {
-  margin: 10px;
-}
-</style>
+        </b-tabs> -->

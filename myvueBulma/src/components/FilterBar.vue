@@ -4,7 +4,7 @@
         <b-input v-model="searched" type="search" icon="search" placeholder="Search a country, a city, a type of organisation..." expanded>
         </b-input>
         <p class="control">
-          <button class="button is-primary">Filter</button>
+          <button @click="filter"class="button is-primary">Filter</button>
         </p>
       </b-field>
     </div>

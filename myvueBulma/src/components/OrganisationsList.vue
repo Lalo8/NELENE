@@ -26,7 +26,7 @@ export default {
         },
     small: {
         type: Boolean,
-        default: false,
+        default: true,
     }
     },
 }
@@ -43,16 +43,17 @@ ul {
  
 }
 .small{
-max-height: 800px;
-padding:5rem 10px 5px 10px;
-    overflow: auto;
-    /* position: absolute; */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    max-width: 330px;
-    margin-bottom: 2px;
-     background-color:#F4F4F4;
+padding:1rem 4px 5px 45px;
+overflow: auto;
+/* position: absolute; */
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+margin-bottom: 2px;
+background-color:#FBF4FF;
+max-height: 750px;
+padding-bottom: 100px;
+
 } 
 </style>

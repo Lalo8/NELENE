@@ -1,17 +1,17 @@
 <template>
   <gmap-map
-      :class="{
-        map: true,
-        small: small
-      }"
-      :center="center"
-      :zoom="zoom"
+    :class="{
+      map: true,
+      small: small
+    }"
+    :center="center"
+    :zoom="zoom"
     > 
-      <gmap-marker v-for="organisation in filterBy(organisations,searched)" :key="organisation._id"
-        :position="{ lat: organisation.location.coordinates[1], lng: organisation.location.coordinates[0] }"
-        ></gmap-marker>
+    <gmap-marker v-for="organisation in filterBy(organisations,searched)" :key="organisation._id"
+      :position="{ lat: organisation.location.coordinates[1], lng: organisation.location.coordinates[0] }"
+      ></gmap-marker>
 
-    </gmap-map>
+  </gmap-map>
 </template>
 
 <script>
@@ -20,7 +20,7 @@ props: {
     organisations: Array,
     small: {
       type: Boolean,
-      default: false,
+      default: true,
     }
   },
   data () {
@@ -44,6 +44,5 @@ props: {
 }
 .small {
   height: 860px;
-  width : 60rem;
 }
 </style>

@@ -1,20 +1,20 @@
 <template>
-  <div>
-    <div class="overviewcontainer">
-      <div class="split1">
-        <div class="result">
-          <h1> X results </H1>
-        </div>
-        <organisations-list :organisations="filterBy(organisations,search)">
-          <organisation-card></organisation-card>
-        </organisations-list>
+  <div class= "splitex">
+    <div class="left">
+      <div class="result">
+        <h1> X results </H1>
       </div>
-        <div class="split">
-          <filter-bar :organisations="organisations"></filter-bar>
-          <map-org :organisations="organisations"></map-org>
-        </div>
+      <organisations-list :organisations="filterBy(organisations,search)">
+        <organisation-card></organisation-card>
+      </organisations-list>
+    </div>
+    <div class="right">
+      <div class="filter">
+        <filter-bar :organisations="organisations"></filter-bar>
       </div>
-  </div>  
+      <map-org :organisations="organisations"></map-org>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -51,13 +51,41 @@ export default {
 </script>
 
 <style scoped>
+.splitex{
+display: flex;
+flex-direction: row;
+background-color: black;
+height: 700px;
+width: 1458px;
+
+}
+.filter{
+  position: absolute;
+  padding:20px;
+  z-index: 700;
+  left: 700px;
+  /* text-align: center; */
+  width: 500px;
+  margin: auto;
+  top: 54px;
+  background-color: rgba(54, 25, 25, 0.3);
+  
+}
+.left{
+width: 450px;
+height: 100%;
+background-color: white;
+}
+.right{
+  height: 100%;
+  width: 1100px;
+  
+}
 .container{
   margin: 0px;
 }
 
 .searchbar{
-margin-bottom: 20px;
-margin-left: 12rem;
 max-width: 600px;
 }
 .split{
@@ -76,7 +104,7 @@ max-width: 600px;
   text-align: center;
   font-size: 35px;
   font-weight: bold;
-  background-color:#F4F4F4;
+  background-color:#FBF4FF;
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #795CD2;

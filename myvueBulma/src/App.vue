@@ -140,7 +140,7 @@ export default {
   props: {
     smallcontainer: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   created () {
@@ -190,6 +190,9 @@ document.addEventListener('DOMContentLoaded', function () {
   color: white; 
   font-size: 30px;
   font-weight: bold;
+
+}
+nav {
 
 }
 #app {
@@ -246,6 +249,10 @@ margin: 0px;
 }
 
 .mainfooter{
+position:fixed;
+left:0px;
+bottom:0px;
+width:100%;
 height: 70px;
 background-color: #795CD2;
 text-align : center;
