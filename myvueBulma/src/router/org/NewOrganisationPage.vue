@@ -55,8 +55,8 @@ export default {
 {
 background-color:rgb(121,92,210);
 height: 4pt;
-width: 30%;
-margin-left: 32rem;
+width: 22%;
+margin-left: 38rem;
 margin-top: -5px;
 }
 .title{
@@ -64,7 +64,7 @@ margin : 0px;
 }
 .header{
     text-align: center;
-    margin-top: 5rem;
+    margin-top: 3rem;
    ;
 }
 
@@ -73,11 +73,12 @@ margin : 0px;
 }
 .container{
     padding: 20px;
-    margin-bottom: 50px;
+    padding-top: 15px;
+    margin-bottom: 7rem;
 }
 .card{
   padding: 50px;
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 50px;
     max-width: 60rem;
     background-color: white;

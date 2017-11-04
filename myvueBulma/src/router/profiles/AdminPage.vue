@@ -1,9 +1,15 @@
 <template> 
     <div>
-       <h1 position="is-centered">Let's do some cleanup ! </h1>
-        <organisations-list :organisations="organisations" :editable="true">
-            <organisation-card></organisation-card>
-        </organisations-list>
+        <div class="container2">
+            <div class="title">
+                <h1>Let's do some cleanup !</h1>
+            </div>
+            <div class="container3">
+                <organisations-list :organisations="organisations" :editable="true">
+                    <organisation-card></organisation-card>
+                </organisations-list>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -57,6 +63,9 @@ h1{
     font-size: 40px;
     margin: 30px auto;
     font-weight: bold;
+}
+.title {
+    text-align: center;
 }
 
 footer {
@@ -114,6 +123,12 @@ span.icon {
     top: 0;
     width: 1.60em;
     z-index: 4;
+}
+.container3 {
+    margin: auto;
+    max-width: 1180px;
+    padding-bottom: 1rem;
+    margin-bottom: 6rem;
 }
 </style>
  /* <ul>

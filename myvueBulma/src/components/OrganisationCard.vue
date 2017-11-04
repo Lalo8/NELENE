@@ -1,50 +1,54 @@
 <template>
-    <li >
-        <div class="card" :class="{smallcard :smallcard}">
-            <div class="card-image" >
-                <figure class="image is-3by2" :class="{smallimg :smallimg}" v-if="organisation.type === 'social business'">
-                    <img src="../assets/social.png" alt="Placeholder image">
-                </figure>
-                <figure class="image is-3by2" :class="{smallimg :smallimg}"  v-if="organisation.type === 'tech'">
-                    <img src="../assets/tech2.png" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                <div class="media-left">
-                    <figure class="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+    <li>
+        <div class="newCard">
+            <div class="card" :class="{smallcard :smallcard}">
+                <div class="card-image" >
+                    <figure class="image is-3by2" :class="{smallimg :smallimg}" v-if="organisation.type === 'social business'">
+                        <img src="../assets/social.png" alt="Placeholder image">
+                    </figure>
+                    <figure class="image is-3by2" :class="{smallimg :smallimg}"  v-if="organisation.type === 'tech'">
+                        <img src="../assets/tech2.png" alt="Placeholder image">
                     </figure>
                 </div>
-                <div class="media-content" :class="{smallcontent :smallcontent}">
-                    <p class="title is-5">{{organisation.name}}</p>
-                    <p class="subtitle is-7">{{organisation.author}}</p>
-                </div>
-                </div>
-                <div class="content" :class="{smallcontent :smallcontent}">
-                    <p>{{organisation.description}}</p>
-                    <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view/'+ organisation._id">
-                        Let's know more
-                    </router-link>
-                    <br>
-                    <br>
-                    <div v-if="smallcard">
-                        <b-tag rounded type="is-danger is-small">{{organisation.category}}</b-tag>
-                        <b-tag rounded type="is-warning is-small">{{organisation.type}}</b-tag>
-                        <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
-                        <b-tag rounded type="is-info is-small">{{organisation.country}}</b-tag>
+                <div class="card-content">
+                    <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        </figure>
                     </div>
-                    <div v-else>
-                        <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
-                        <b-tag rounded type="is-warning is-medium">{{organisation.type}}</b-tag>
-                        <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
-                        <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
+                    <div class="media-content" :class="{smallcontent :smallcontent}">
+                        <p class="title is-5">{{organisation.name}}</p>
+                        <p class="subtitle is-7">{{organisation.author}}</p>
+                    </div>
+                    </div>
+                    <div class="content" :class="{smallcontent :smallcontent}">
+                        <p>{{organisation.description}}</p>
+                        <router-link class="button is-primary is-outlined is-small" :to="'/organisations/view/'+ organisation._id">
+                            Let's know more
+                        </router-link>
+                        <br>
+                        <br>
+                        <div v-if="smallcard">
+                            <b-tag rounded type="is-danger is-small">{{organisation.category}}</b-tag>
+                            <b-tag rounded type="is-warning is-small">{{organisation.type}}</b-tag>
+                            <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
+                            <b-tag rounded type="is-info is-small">{{organisation.country}}</b-tag>
+                        </div>
+                        <div v-else>
+                            <b-tag rounded type="is-danger is-medium">{{organisation.category}}</b-tag>
+                            <b-tag rounded type="is-warning is-medium">{{organisation.type}}</b-tag>
+                            <!-- <b-tag v-for="need in organisation.needs" :key="need" rounded type="is-warning is-medium">{{need}}</b-tag> -->
+                            <b-tag rounded type="is-info is-medium">{{organisation.country}}</b-tag>
+                        </div>
                     </div>
                 </div>
+                <!-- <div v-if="editable" class="card-footer">
+                </div> -->
             </div>
-            <div v-if="editable" class="card-footer">
-                <router-link :to="'/organisations/edit/'+ organisation._id" class="button card-footer-item is-warning is-medium">Edit</router-link>
-                <button @click="deleteOrganisation(organisation._id)" class="button card-footer-item is-danger is-medium" >Delete</button>
+            <div class="optionAdmin" v-if="editable">
+                <router-link :to="'/organisations/edit/'+ organisation._id" class="button is-warning is-small">Edit</router-link>
+                <button v-if="$root.user.isAdmin" @click="deleteOrganisation(organisation._id)" class="button card-footer-item is-danger is-small" >Delete</button>
             </div>
         </div>
     </li>
@@ -72,6 +76,19 @@ export default {
 </script>
 
 <style scoped>
+.newCard{
+    display: flex;
+
+}
+.optionAdmin {
+    flex-direction: column;
+    height: 100%;
+}
+
+.button{
+    height: 50%;
+    width : 100%;
+}
 .card{
   max-width: 23rem;
    background-color: white;
@@ -120,4 +137,5 @@ font-size: 15px;
 .smallcontent p{
 font-size: 13px;
 } 
+
 </style>

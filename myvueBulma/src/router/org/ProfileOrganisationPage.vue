@@ -78,7 +78,7 @@ margin-left: 3rem;
   background-color: #cccccc;
   background-image: url("../../assets/dakar2.jpg");
   text-align: center;
-  padding-top: 13%;
+  padding-top: 10%;
   color: white;
   font-size: 40px;
   font-weight: bold;
@@ -129,6 +129,7 @@ p {
 .card,article {
   width: 80%;
   margin: 30px auto;
+  margin-bottom: 8rem;
   border: none;
 }
 .centered {

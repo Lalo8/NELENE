@@ -1,5 +1,9 @@
 <template> 
   <div>
+    <div class="maintitle">
+      <h1>Discover here the African entrepreunarial ecosystem at a glance !</h1>
+       <div class="trait"></div>
+    </div>
     <div class="searchbar">
        <filter-bar :organisations="organisations" @filter="filteredOrganisations = $event"></filter-bar>
     </div>
@@ -54,6 +58,8 @@ export default {
 footer {
   width: 400px;
   margin: 40px auto;
+  padding-bottom: 6rem;
+  margin-top: 20px;
 }
 .searchbar{
 margin: 30px auto;
@@ -91,5 +97,23 @@ li{
   @media(min-width: 56rem) {
     width: 33.3333%;
   }
+}
+
+h1 {
+  font-size: 30px;
+  margin:auto;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.maintitle {
+  text-align: center;
+}
+.trait {
+  background-color: rgb(121,92,210);
+  height: 4pt;
+  width: 14%;
+  margin-left: 58rem;
+  margin-top: -23px;
 }
 </style>

@@ -1,15 +1,15 @@
 <template>
-<ul :class="{
-        small: small
-      }">
-    <organisation-card
-        v-for="organisation in organisations"
-        :key="organisation._id"
-        :organisation="organisation"
-        :editable="editable"
-    >
-    </organisation-card>
-</ul>
+        <ul :class="{
+                small: small
+            }">
+            <organisation-card
+                v-for="organisation in organisations"
+                :key="organisation._id"
+                :organisation="organisation"
+                :editable="editable"
+            >
+            </organisation-card>
+        </ul>
 </template>
 
 <script>
@@ -56,4 +56,11 @@ max-height: 750px;
 padding-bottom: 100px;
 
 } 
+.container2 {
+    margin: auto;
+    max-width: 1280px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 6rem;
+}
 </style>

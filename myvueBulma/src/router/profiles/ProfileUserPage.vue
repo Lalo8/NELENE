@@ -1,8 +1,10 @@
 <template> 
   <div>
-     <organisations-list :organisations="organisations">
+    <div class="container3">
+      <organisations-list :organisations="organisations" editable>
       <organisation-card></organisation-card>
-    </organisations-list>
+      </organisations-list>
+    </div>
   </div>
 </template>
 
@@ -53,6 +55,12 @@ li{
   @media(min-width: 56rem) {
     width: 33.3333%;
   }
+}
+.container3 {
+    margin: auto;
+    max-width: 1180px;
+    padding-bottom: 1rem;
+    margin-bottom: 6rem;
 }
 </style>
 /* <ul>

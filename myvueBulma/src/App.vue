@@ -15,16 +15,24 @@
           
           <div class="navbar-end">
             <div class="navbar-item">
+              <router-link to="/overview" class="navbar-link">
+                  Overview
+                </router-link>    
                 <router-link v-if="!$root.user" to="login" class="navbar-link">
                   Login
                 </router-link>   
                 <router-link v-if="!$root.user" to="signup" class="navbar-link">
                   Signup
                 </router-link> 
-                 <router-link v-if="$root.user" to="/" class="navbar-link">
+                <div v-if="$root.user" >
+                 <router-link v-if="$root.user.isAdmin" to="/admin" class="navbar-link">
                  All organisations
                 </router-link> 
-                 <router-link v-if="$root.user" to="/user/profile" class="navbar-link">
+                 <router-link to="/" class="navbar-link" v-else>
+                 All organisations
+                </router-link> 
+                </div>
+                 <router-link v-if="$root.user" to="/profile" class="navbar-link">
                  My organisations
                 </router-link> 
                  <router-link v-if="$root.user" to="/organisations/add" class="navbar-link">
@@ -45,12 +53,12 @@
                     </b-dropdown-item>
                     <hr class="dropdown-divider">
           
-                    <b-dropdown-item value="home" v-if="$root.user.isAdmin">
+                    <!-- <b-dropdown-item value="home" v-if="$root.user.isAdmin">
                       <b-icon icon="home">
                       </b-icon>
-                        <a href='/user/profile/admin'>All organisations</a>  
-                    </b-dropdown-item>
-                    <b-dropdown-item value="home" v-else>
+                        <a href='/admin'>All organisations</a>  
+                    </b-dropdown-item> -->
+                    <b-dropdown-item value="home">
                       <b-icon icon="home">
                       </b-icon>
                         <a href='/'>All organisations</a> 
@@ -58,7 +66,7 @@
                     <b-dropdown-item value="home">
                       <b-icon icon="check">
                       </b-icon>
-                        <a href='/user/profile'>My organisations</a>
+                        <a href='/profile'>My organisations</a>
                     </b-dropdown-item>
                     <b-dropdown-item value="home">
                       <b-icon icon="plus">
@@ -133,7 +141,7 @@ export default {
       name:'',
       active:false,
       organisations:[],
-      isAdmin:false,
+      isAdmin:true,
       navigation: null
     }
   },
