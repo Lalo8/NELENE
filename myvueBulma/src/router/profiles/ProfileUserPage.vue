@@ -58,7 +58,7 @@ li{
 }
 .container3 {
     margin: auto;
-    max-width: 1180px;
+    max-width: 1242px;
     padding-bottom: 1rem;
     margin-bottom: 6rem;
 }

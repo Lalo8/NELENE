@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "buefy": "^0.5.4",
+    "cloudinary": "^1.9.1",
     "dotenv": "^4.0.0",
     "google-maps": "^3.2.1",
     "install": "^0.10.1",

@@ -1,20 +1,10 @@
 <template>
-  <form @submit.prevent="addNewOrganisation">
+  <form @submit.prevent="$emit('submit', organisation)">
         <b-field label="Profile Picture">
         </b-field>
         <div class="field">
             <div class="file is-warning is-boxed is-centered">
-                <label class="file-label">
-                    <input class="file-input" type="file" name="resume">
-                        <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fa fa-cloud-upload"></i>
-                            </span>
-                            <span class="file-label">
-                            Upload your file 
-                            </span>
-                        </span>
-                </label>
+                <br>
             </div>
         </div>
         <b-field label="Name">
@@ -66,6 +56,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
       displayInputLocation: {
@@ -75,6 +66,8 @@ export default {
   },
   data() {
       return {
+          picture: '',
+          imgUrl: '',
           organisation:{
             name: "",
             description: "",
@@ -85,9 +78,10 @@ export default {
             category: "",
             needs: []
           }
+          
       } 
   }
-};
+}
 </script>
 <style>
 .form {

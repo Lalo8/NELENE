@@ -59,7 +59,6 @@ footer {
   width: 400px;
   margin: 40px auto;
   padding-bottom: 6rem;
-  margin-top: 20px;
 }
 .searchbar{
 margin: 30px auto;
@@ -112,8 +111,8 @@ h1 {
 .trait {
   background-color: rgb(121,92,210);
   height: 4pt;
-  width: 14%;
-  margin-left: 58rem;
+  width: 13%;
+  margin-left: 60rem;
   margin-top: -23px;
 }
 </style>

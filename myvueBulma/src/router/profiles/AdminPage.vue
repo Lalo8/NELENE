@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { getOrganisations, removeOrganisation, editOrganisation} from '@/api/organisations'
+import { getOrganisations,removeOrganisation, editOrganisation} from '@/api/organisations'
 import OrganisationsList from '@/components/OrganisationsList'
 
 export default {
@@ -27,17 +27,10 @@ components: {
       errors: [],
       selected: null,
       name: '',
+      organisation: {}
     }
 },
 
-  methods:{
-    deleteOrganisation(id) {
-        removeOrganisation(id).then(() => {
-            const index = this.organisations.findIndex((organisation) => organisation._id === id )
-            this.organisations.splice(index, 1)
-        });
-    }
-  },
   // computed: {
   //           filteredDataObj() {
   //               return this.organisations.filter((option) => {
@@ -97,6 +90,7 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-right: 42px;
 }
 
 li{
@@ -126,9 +120,10 @@ span.icon {
 }
 .container3 {
     margin: auto;
-    max-width: 1180px;
+    max-width: 1230px;
     padding-bottom: 1rem;
     margin-bottom: 6rem;
+    margin-right: 38px;
 }
 </style>
  /* <ul>

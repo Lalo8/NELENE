@@ -47,8 +47,8 @@
                 </div> -->
             </div>
             <div class="optionAdmin" v-if="editable">
-                <router-link :to="'/organisations/edit/'+ organisation._id" class="button is-warning is-small">Edit</router-link>
-                <button v-if="$root.user.isAdmin" @click="deleteOrganisation(organisation._id)" class="button card-footer-item is-danger is-small" >Delete</button>
+                <router-link :to="'/organisations/edit/'+ organisation._id" class="button commandA is-warning is-small">Edit</router-link>
+                <button v-if="$root.user.isAdmin" @click="remove" class="button commandA card-footer-item is-danger is-small" >Delete</button>
             </div>
         </div>
     </li>
@@ -71,7 +71,13 @@ export default {
       type: Boolean,
       default: true,
     }
+  },
+  methods: {
+      remove() {
+          this.$emit('delete')
+      }
   }
+    
 };
 </script>
 
@@ -85,7 +91,7 @@ export default {
     height: 100%;
 }
 
-.button{
+.commandA{
     height: 50%;
     width : 100%;
 }
@@ -109,6 +115,7 @@ export default {
 }
 li{
   display: flex;
+  margin-left: -16px;
   padding: 1rem;
   @media(min-width: 40rem) {
     width: 50%;
@@ -119,8 +126,8 @@ li{
 }
 
 .smallcard{
-    max-width: 18rem;
-    max-height: 28rem;
+    max-width: 20rem;
+    max-height: 32rem;
 }
 .smallimg {
     padding-top: 60%;

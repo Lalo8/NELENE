@@ -6,7 +6,7 @@
             <p>In order for the organisation page to be useful, please enter as many details as possible  </p>
         </div>
          <div class="card">
-            <organisation-form></organisation-form>
+            <organisation-form @submit="addNewOrganisation"></organisation-form>
        
             <section>
             </section>
@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         
-        addNewOrganisation() {
+        addNewOrganisation(organisation) {
             // this.organisation.name = "Paps"
             // this.organisation.description = "Geolocation delivery service app"
             // this.organisation.contact = "contact@paps.com"
@@ -38,7 +38,7 @@ export default {
             // this.organisation.category = "startup"
             // this.organisation.needs = "seed funding"
             // this.organisation.ownerId = "59f0ab43c12c7c4a2bfc0918"
-            addNewOrganisation(this.organisation).then(organisation => {
+            addNewOrganisation(organisation).then(organisation => {
                 console.log("Organisation created: ", organisation)
                 this.$router.push('/');
             })

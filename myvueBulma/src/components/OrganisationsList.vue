@@ -3,10 +3,11 @@
                 small: small
             }">
             <organisation-card
-                v-for="organisation in organisations"
+                v-for="(organisation, index) in organisations"
                 :key="organisation._id"
                 :organisation="organisation"
                 :editable="editable"
+                @delete="organisations.splice(index, 1)"
             >
             </organisation-card>
         </ul>
