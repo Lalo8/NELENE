@@ -35,6 +35,7 @@ router.post('/',passport.authenticate('jwt', config.jwtSession), (req,res,next)=
         city,
         category,
         needs,
+        location
         } = req.body;
     const ownerId = req.user ? req.user._id : null;
 
@@ -47,7 +48,8 @@ router.post('/',passport.authenticate('jwt', config.jwtSession), (req,res,next)=
         city,
         category,
         needs,
-        ownerId
+        ownerId,
+        location
     });
 
     organisation.save()
@@ -72,6 +74,7 @@ router.patch('/:id', (req, res) => {
         city,
         category,
         needs,
+        location
         } = req.body;
         const changes = {name,
             description,
@@ -80,7 +83,8 @@ router.patch('/:id', (req, res) => {
             country,
             city,
             category,
-            needs} 
+            needs,
+            location} 
         
         Object.keys(changes).forEach(key => {
             if (!changes[key]) {delete changes[key]}

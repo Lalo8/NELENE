@@ -13,6 +13,7 @@ const config = require('./config');
 const { Strategy, ExtractJwt } = require('passport-jwt');
 const history = require('express-history-api-fallback');
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
+const imagesRoutes = require('./routes/images');
 
 const app = express();
 
@@ -64,6 +65,7 @@ const authRoutes = require('./routes/auth');
 const organisationsRouter = require ('./routes/org-routes');
 app.use('/api', authRoutes);
 app.use('/api/organisations', organisationsRouter);
+app.use('/api/images', imagesRoutes);
 // This is an example of protected route
 app.get(
   '/api/secret',
