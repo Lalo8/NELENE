@@ -194,7 +194,13 @@ document.addEventListener('DOMContentLoaded', function () {
   font-weight: bold;
 
 }
-nav {
+.navbar {
+position:fixed;
+left:0px;
+top:0px;
+width: 100%;
+z-index: 600;
+
 
 }
 #app {
@@ -251,9 +257,7 @@ margin: 0px;
 }
 
 .mainfooter{
-position:fixed;
-left:0px;
-bottom:0px;
+
 width:100%;
 height: 70px;
 background-color: #795CD2;

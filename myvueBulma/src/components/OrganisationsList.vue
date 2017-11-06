@@ -7,7 +7,7 @@
                 :key="organisation._id"
                 :organisation="organisation"
                 :editable="editable"
-                @delete="organisations.splice(index, 1)"
+                @delete="deleteOrganisation(organisation, index)"
             >
             </organisation-card>
         </ul>
@@ -15,6 +15,8 @@
 
 <script>
 import OrganisationCard from '@/components/OrganisationCard'
+import { removeOrganisation} from '@/api/organisations'
+
 export default {
     components: {
         OrganisationCard
@@ -25,11 +27,18 @@ export default {
             type: Boolean,
             default: false
         },
-    small: {
-        type: Boolean,
-        default: false,
-    }
+        small: {
+            type: Boolean,
+            default: false,
+        }
     },
+    methods: {
+        deleteOrganisation(organisation, index) {
+            removeOrganisation(organisation._id).then(() => {
+                this.organisations.splice(index, 1)
+            })
+        }
+    }
 }
 </script>
 
