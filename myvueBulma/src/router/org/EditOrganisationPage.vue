@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <section>
-      <div class="card">
+      <div class="card" v-if="organisation">
         <form @submit.prevent="editOrganisation">
           <b-field label="Profile Picture">
           </b-field>
@@ -21,7 +21,7 @@
               </div>
             </div>
           <b-field label="Name">
-              <b-input v-model="organisation.name" value="organisation.name"></b-input>  
+              <b-input v-model="organisation.name"></b-input>  
           </b-field>
           <b-field label="Description">
               <b-input v-model="organisation.description" type="textarea">

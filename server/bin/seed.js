@@ -34,7 +34,8 @@ const incubators =[
 	category: 'incubator',
 	status: 'accepted',
 	needs:['recruitment','location'],
-	type:'tech'
+	type:'tech',
+	img:"/src/assets/logos/ems.png"
 	}), new Organisation({
 	name: "Nairobi Garage Ngong Road",
 	description: "Fully serviced, coworking office space for startups, techies and entrepreneurs. For more information - check up web site https://nairobigarage.com/",
@@ -55,6 +56,7 @@ const incubators =[
 	city: "Ouagadougou",
 	category: 'incubator',
 	status: 'accepted',
+	img:"/src/assets/logos/lafabrique.jpg",
 	location: { type: "Point", coordinates: [ 36.805311, -1.2702478] }
 }),  new Organisation({
 	name: "Enspire Incubator",

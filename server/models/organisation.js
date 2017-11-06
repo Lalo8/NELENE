@@ -60,7 +60,12 @@ const organizationSchema = new Schema({
 		},
 	location: { 
 			type: { type: String }, 
-			coordinates: [Number] }
+			coordinates: [Number] 
+		},
+	img: { 
+		type: String
+	}
+	
 });
 
 module.exports = mongoose.model('Organisation', organizationSchema);

@@ -6,37 +6,37 @@
 
     <form @submit.prevent="signup">
       <div class="modal-card" style="width:500px">
-              <section class="modal-card-body">
-                  <b-field label="Email">
-                      <b-input v-model="email" 
-                          type="email"
-                          placeholder="Your email"
-                          required>
-                      </b-input>
-                  </b-field> 
-                  <b-field label="Name">
-                      <b-input v-model="name" 
-                          type="name"
-                          placeholder="Your name"
-                          required>
-                      </b-input>
-                  </b-field>
+      <section class="modal-card-body">
+          <b-field label="Email">
+              <b-input v-model="email" 
+                  type="email"
+                  placeholder="Your email"
+                  required>
+              </b-input>
+          </b-field> 
+          <b-field label="Name">
+              <b-input v-model="name" 
+                  type="name"
+                  placeholder="Your name"
+                  required>
+              </b-input>
+          </b-field>
 
-                  <b-field label="Password">
-                      <b-input
-                      v-model="password"
-                          type="password"
-                          password-reveal
-                          placeholder="Your password"
-                          required>
-                      </b-input>
-                  </b-field>
+          <b-field label="Password">
+              <b-input
+              v-model="password"
+                  type="password"
+                  password-reveal
+                  placeholder="Your password"
+                  required>
+              </b-input>
+          </b-field>
 
-                  <b-checkbox>Remember me</b-checkbox>
-              </section>
-            <footer class="modal-card-foot">
-                <button class="button is-primary">Sign up</button>
-            </footer>
+          <b-checkbox>Remember me</b-checkbox>
+      </section>
+      <footer class="modal-card-foot">
+          <button class="button is-primary">Sign up</button>
+      </footer>
       </div>
     </form>
   <!-- <div>
